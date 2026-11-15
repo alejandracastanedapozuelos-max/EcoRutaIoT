@@ -1,0 +1,2236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="dashboard">
+  <meta name="design-style" content="carbon">
+  <title>ECORUTA IoT — Social Business Model Canvas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* 1. Carbon base tokens */
+      --background: #ffffff;
+      --surface-container-low: #f4f4f4;
+      --surface-container: #f4f4f4;
+      --surface-container-high: #e0e0e0;
+
+      --on-surface: #161616;
+      --on-surface-variant: #464646;
+
+      --outline: #8d8d8d;
+      --outline-variant: #d0d0d0;
+
+      --primary: #1565C0;
+      --on-primary: #ffffff;
+      --primary-container: #DCEEFF;
+      --on-primary-container: #0D3B75;
+      --secondary: #525252;
+      --tertiary: #2E7D32;
+      --error: #da1e28;
+      --on-error: #ffffff;
+
+      /* 2. ECORUTA IoT Social Business Model Canvas palette */
+      --tier-social-bg: #D9F2D9;
+      --tier-social-bg-hover: #CBEAC9;
+      --tier-social-accent: #2E7D32;
+      --tier-social-ink: #164A19;
+      --tier-social-border: #8CC48E;
+
+      --tier-business-bg: #DCEEFF;
+      --tier-business-bg-hover: #CCE4FF;
+      --tier-business-accent: #1565C0;
+      --tier-business-ink: #0D3B75;
+      --tier-business-border: #8EB8E5;
+      --tier-value-bg: #FFFFFF;
+
+      --tier-finance-bg: #F2F2F2;
+      --tier-finance-bg-hover: #E6E6E6;
+      --tier-finance-accent: #393939;
+      --tier-finance-ink: #161616;
+      --tier-finance-border: #C6C6C6;
+
+      /* Official SDG badge colors (used via CSS classes) */
+      --ods-8: #A21942;
+      --ods-9: #FD6925;
+      --ods-11: #FD9D24;
+      --ods-12: #BF8B2E;
+      --ods-13: #3F7E44;
+      --ods-ink: #ffffff;
+      --ods-11-ink: #161616;
+
+      /* Data series */
+      --data-1: #1565C0;
+      --data-2: #2E7D32;
+      --data-3: #005d5d;
+      --data-4: #6929c4;
+      --data-context: #8d8d8d;
+
+      /* Fonts */
+      --font-headline: 'IBM Plex Sans', sans-serif;
+      --font-body: 'IBM Plex Sans', sans-serif;
+      --font-label: 'IBM Plex Mono', monospace;
+
+      /* Shape */
+      --rounded: 0.125rem;
+      --rounded-lg: 0.25rem;
+      --rounded-full: 0.75rem;
+
+      /* Style effects */
+      --shadow-1: 0 2px 6px rgb(0 0 0 / 0.08);
+      --shadow-2: 0 4px 12px rgb(0 0 0 / 0.12);
+      --rule: 1px solid var(--outline-variant);
+      --field-rule: 1px solid var(--outline);
+      --indicator: 3px solid var(--primary);
+
+      /* 3. Shared tokens */
+      --positive: #2E7D32;
+      --warning: #b26a00;
+      --focus: #1565C0;
+
+      /* Type scale (dashboard/tool ratio) */
+      --display-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.125rem);
+      --headline-size: clamp(1.125rem, 1rem + 0.45vw, 1.375rem);
+      --subhead-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.0625rem);
+      --body-size: clamp(0.875rem, 0.85rem + 0.12vw, 0.9375rem);
+      --label-size: 0.75rem;
+
+      /* Spacing scale (4pt base) */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      position: static !important;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    /* Main container */
+    .page-shell {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: var(--space-lg);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-lg);
+    }
+
+    .page-shell * {
+      min-width: 0;
+    }
+
+    /* Header bar */
+    .canvas-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+      gap: var(--space-lg);
+      align-items: start;
+      border-bottom: 2px solid var(--on-surface);
+      padding-bottom: var(--space-md);
+    }
+
+    .brand-eyebrow {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--tier-social-accent);
+      font-weight: 600;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-xs);
+    }
+
+    .canvas-title {
+      font-family: var(--font-headline);
+      font-size: var(--display-size);
+      font-weight: 300;
+      line-height: 1.15;
+      margin: 0 0 var(--space-xs) 0;
+      color: var(--on-surface);
+      overflow-wrap: break-word;
+    }
+
+    .canvas-title strong {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .canvas-subtitle {
+      margin: 0;
+      font-size: var(--body-size);
+      color: var(--on-surface-variant);
+      max-width: 68ch;
+      overflow-wrap: break-word;
+    }
+
+    /* Top-right SDG cluster + theme icon strip */
+    .header-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: var(--space-sm);
+    }
+
+    .ods-header-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: var(--space-xs);
+    }
+
+    .mono-kicker {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--on-surface-variant);
+      margin: 0;
+    }
+
+    .ods-badges-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: var(--space-xs);
+    }
+
+    .ods-pill {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 48px;
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-sm);
+      border: 1px solid transparent;
+      border-radius: var(--rounded);
+      cursor: pointer;
+      color: var(--ods-ink);
+      font-family: var(--font-label);
+      line-height: 1.1;
+      transition: transform var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out);
+    }
+
+    .ods-pill:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-1);
+    }
+
+    .ods-pill.is-selected {
+      box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--on-surface);
+    }
+
+    .ods-pill-num {
+      font-size: 0.9375rem;
+      font-weight: 700;
+    }
+
+    .ods-pill-tag {
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .ods-8 { background-color: var(--ods-8); }
+    .ods-9 { background-color: var(--ods-9); }
+    .ods-11 { background-color: var(--ods-11); color: var(--ods-11-ink); }
+    .ods-12 { background-color: var(--ods-12); }
+    .ods-13 { background-color: var(--ods-13); }
+
+    .pillar-icons-strip {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: var(--space-xs);
+    }
+
+    .pillar-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: var(--space-xs) var(--space-sm);
+      background-color: var(--surface-container-low);
+      border: var(--rule);
+      border-radius: var(--rounded-full);
+      font-family: var(--font-label);
+      font-size: 0.6875rem;
+      color: var(--on-surface);
+      white-space: nowrap;
+    }
+
+    .pillar-chip i, .pillar-chip svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    .pillar-chip.is-green svg { color: var(--tier-social-accent); }
+    .pillar-chip.is-blue svg { color: var(--tier-business-accent); }
+
+    /* Toolbar: tier filters, quick search, export */
+    .canvas-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--space-md);
+      background-color: var(--surface-container-low);
+      border: var(--rule);
+      padding: var(--space-md) var(--space-md) var(--space-lg) var(--space-md);
+    }
+    .block-detail-text {
+      margin: 0;
+      color: var(--on-surface-variant);
+    }
+    .block-ods-list {
+      margin-top: var(--space-sm);
+    }
+    .inspector-list {
+      margin-top: var(--space-xs);
+    }
+    .ods-focus-body {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--on-surface-variant);
+    }
+
+    .toolbar-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: var(--space-sm);
+    }
+
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+
+    .tab-btn {
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-md);
+      background-color: var(--background);
+      color: var(--on-surface);
+      border: var(--rule);
+      border-bottom: 2px solid transparent;
+      border-radius: 0;
+      font-size: var(--body-size);
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+    }
+
+    .tab-btn:hover {
+      background-color: var(--surface-container-high);
+    }
+
+    .tab-btn.is-active {
+      font-weight: 600;
+      border-bottom: var(--indicator);
+      background-color: var(--background);
+    }
+
+    .tab-btn.is-active[data-tier="social"] {
+      border-bottom-color: var(--tier-social-accent);
+      color: var(--tier-social-ink);
+    }
+
+    .tab-btn.is-active[data-tier="business"] {
+      border-bottom-color: var(--tier-business-accent);
+      color: var(--tier-business-ink);
+    }
+
+    .tab-btn.is-active[data-tier="finance"] {
+      border-bottom-color: var(--tier-finance-accent);
+      color: var(--tier-finance-ink);
+    }
+
+    .search-field {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      min-width: 220px;
+    }
+
+    .field-label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--on-surface-variant);
+    }
+
+    .text-input {
+      height: 44px;
+      padding: 0 var(--space-md);
+      background-color: var(--background);
+      border: var(--rule);
+      border-bottom: var(--field-rule);
+      border-radius: var(--rounded);
+      color: var(--on-surface);
+      font-size: var(--body-size);
+      width: 100%;
+    }
+
+    .btn-primary {
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-lg);
+      background-color: var(--primary);
+      color: var(--on-primary);
+      border: 1px solid var(--primary);
+      border-radius: 0;
+      font-size: var(--body-size);
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      transition: background-color var(--dur-micro) var(--ease-out);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--on-primary-container);
+    }
+
+    .btn-secondary {
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-md);
+      background-color: var(--background);
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      border-radius: 0;
+      font-size: var(--body-size);
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      transition: background-color var(--dur-micro) var(--ease-out);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--primary-container);
+      color: var(--on-primary-container);
+    }
+
+    /* Main 3-tier Canvas Layout */
+    .canvas-board {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .tier-section {
+      border: 1px solid var(--outline-variant);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .tier-section.is-hidden {
+      display: none;
+    }
+
+    .tier-social {
+      background-color: var(--tier-social-bg);
+      border-color: var(--tier-social-border);
+    }
+
+    .tier-business {
+      background-color: var(--tier-business-bg);
+      border-color: var(--tier-business-border);
+    }
+
+    .tier-finance {
+      background-color: var(--tier-finance-bg);
+      border-color: var(--tier-finance-border);
+    }
+
+    .tier-banner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      padding-bottom: var(--space-xs);
+      border-bottom: 1px solid rgb(0 0 0 / 0.12);
+    }
+
+    .tier-heading-wrap {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .tier-badge {
+      font-family: var(--font-label);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--rounded);
+      color: var(--on-primary);
+    }
+
+    .tier-social .tier-badge { background-color: var(--tier-social-accent); }
+    .tier-business .tier-badge { background-color: var(--tier-business-accent); }
+    .tier-finance .tier-badge { background-color: var(--tier-finance-accent); }
+
+    .tier-title {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-size: var(--headline-size);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .tier-social .tier-title { color: var(--tier-social-ink); }
+    .tier-business .tier-title { color: var(--tier-business-ink); }
+    .tier-finance .tier-title { color: var(--tier-finance-ink); }
+
+    .tier-caption {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      color: var(--on-surface-variant);
+      margin: 0;
+    }
+
+    /* Tier Grids */
+    .grid-social {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-sm);
+    }
+
+    /* Middle Tier: 5 columns with Propuesta de Valor dead-center and tallest/widest */
+    .grid-business {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.45fr) minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-rows: auto auto;
+      gap: var(--space-sm);
+      align-items: stretch;
+    }
+
+    .block-socios { grid-column: 1; grid-row: 1 / span 2; }
+    .block-actividades { grid-column: 2; grid-row: 1; }
+    .block-recursos { grid-column: 2; grid-row: 2; }
+    .block-propuesta { grid-column: 3; grid-row: 1 / span 2; }
+    .block-relacion { grid-column: 4; grid-row: 1 / span 2; }
+    .block-canales { grid-column: 5; grid-row: 1 / span 2; }
+
+    .grid-finance {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-sm);
+    }
+
+    /* Individual Canvas Block — strict overflow prevention */
+    .canvas-block {
+      background-color: var(--background);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      min-width: 0;
+      min-height: 0;
+      overflow: hidden;
+      cursor: pointer;
+      text-align: left;
+      position: relative;
+      transition: box-shadow var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+    }
+
+    .canvas-block:hover {
+      box-shadow: var(--shadow-1);
+      transform: translateY(-1px);
+    }
+
+    .canvas-block.is-selected {
+      box-shadow: 0 0 0 2px var(--primary);
+      border-color: var(--primary);
+    }
+
+    .tier-social .canvas-block.is-selected {
+      box-shadow: 0 0 0 2px var(--tier-social-accent);
+      border-color: var(--tier-social-accent);
+    }
+
+    .canvas-block.is-dimmed {
+      opacity: 0.42;
+    }
+
+    /* Highlight Propuesta de Valor center block */
+    .block-propuesta {
+      border: 2px solid var(--tier-business-accent);
+      background-color: var(--tier-value-bg);
+      box-shadow: var(--shadow-1);
+    }
+
+    .block-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-xs);
+      border-bottom: var(--rule);
+      padding-bottom: var(--space-xs);
+      flex-shrink: 0;
+    }
+
+    .block-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .block-code {
+      font-family: var(--font-label);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--on-surface-variant);
+    }
+
+    .tier-social .block-code { color: var(--tier-social-accent); }
+    .tier-business .block-code { color: var(--tier-business-accent); }
+
+    .block-title {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-size: var(--subhead-size);
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--on-surface);
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      hyphens: auto;
+    }
+
+    .block-propuesta .block-title {
+      font-size: var(--headline-size);
+      color: var(--tier-business-ink);
+    }
+
+    .block-icon-wrap {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--rounded);
+      background-color: var(--surface-container-low);
+    }
+
+    .tier-social .block-icon-wrap {
+      background-color: var(--tier-social-bg);
+      color: var(--tier-social-ink);
+    }
+
+    .tier-business .block-icon-wrap {
+      background-color: var(--tier-business-bg);
+      color: var(--tier-business-ink);
+    }
+
+    .tier-finance .block-icon-wrap {
+      background-color: var(--tier-finance-bg);
+      color: var(--tier-finance-ink);
+    }
+
+    .block-icon-wrap svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Scrollable sub-container for longer content — prevents overflow/clipping */
+    .block-scroll {
+      flex: 1 1 auto;
+      min-height: 0;
+      max-height: 220px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-right: var(--space-xs);
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      hyphens: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--outline) transparent;
+    }
+
+    .block-propuesta .block-scroll,
+    .block-socios .block-scroll,
+    .block-relacion .block-scroll,
+    .block-canales .block-scroll {
+      max-height: 360px;
+    }
+
+    .block-scroll::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .block-scroll::-webkit-scrollbar-thumb {
+      background-color: var(--outline);
+      border-radius: var(--rounded-full);
+    }
+
+    .block-lead {
+      margin: 0 0 var(--space-sm) 0;
+      font-weight: 600;
+      font-size: clamp(0.84rem, 0.8rem + 0.15vw, 0.9375rem);
+      line-height: 1.38;
+      color: var(--on-surface);
+      overflow-wrap: break-word;
+    }
+
+    .block-list {
+      margin: 0;
+      padding-left: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      font-size: clamp(0.8125rem, 0.78rem + 0.1vw, 0.875rem);
+      line-height: 1.45;
+      color: var(--on-surface-variant);
+    }
+
+    .block-list li {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
+
+    .block-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      margin-top: var(--space-sm);
+    }
+
+    .mini-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px var(--space-sm);
+      border-radius: var(--rounded-full);
+      font-family: var(--font-label);
+      font-size: 0.6875rem;
+      line-height: 1.3;
+      max-width: 100%;
+      white-space: normal;
+      overflow-wrap: break-word;
+    }
+
+    .tier-social .mini-tag {
+      background-color: var(--tier-social-bg);
+      color: var(--tier-social-ink);
+    }
+
+    .tier-business .mini-tag {
+      background-color: var(--tier-business-bg);
+      color: var(--tier-business-ink);
+    }
+
+    .tier-finance .mini-tag {
+      background-color: var(--tier-finance-bg);
+      color: var(--tier-finance-ink);
+    }
+
+    .block-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-xs);
+      padding-top: var(--space-xs);
+      border-top: var(--rule);
+      font-family: var(--font-label);
+      font-size: 0.6875rem;
+      color: var(--on-surface-variant);
+      flex-shrink: 0;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 600;
+    }
+
+    .status-pill.is-validated {
+      color: var(--positive);
+    }
+
+    /* Block-level ODS mini badges inside Block 04 */
+    .ods-mini-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      margin-top: var(--space-xs);
+    }
+
+    .ods-mini-badge {
+      padding: 3px 6px;
+      border-radius: var(--rounded);
+      font-family: var(--font-label);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: var(--ods-ink);
+    }
+
+    .ods-mini-badge.ods-11 {
+      color: var(--ods-11-ink);
+    }
+
+    /* Lower analytical workspace: Inspector + ODS Detail + Viability Simulator */
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: var(--space-lg);
+      align-items: start;
+    }
+
+    .panel-card {
+      background-color: var(--surface-container-low);
+      border: var(--rule);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      min-width: 0;
+    }
+
+    .panel-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      border-bottom: var(--rule);
+      padding-bottom: var(--space-sm);
+    }
+
+    .panel-title {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-size: var(--headline-size);
+      font-weight: 600;
+      color: var(--on-surface);
+    }
+
+    .inspector-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      align-items: center;
+    }
+
+    .detail-box {
+      background-color: var(--background);
+      border: var(--rule);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      max-height: 300px;
+      overflow-y: auto;
+      overflow-wrap: break-word;
+    }
+
+    .notes-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .notes-textarea {
+      width: 100%;
+      min-height: 84px;
+      padding: var(--space-sm) var(--space-md);
+      background-color: var(--background);
+      border: var(--rule);
+      border-bottom: var(--field-rule);
+      border-radius: var(--rounded);
+      color: var(--on-surface);
+      font-size: var(--body-size);
+      resize: vertical;
+    }
+
+    .notes-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+
+    .inline-feedback {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      color: var(--positive);
+      min-height: 1.2em;
+    }
+
+    /* ODS Detail Drawer inside right column */
+    .ods-focus-card {
+      background-color: var(--background);
+      border: var(--rule);
+      border-left: 4px solid var(--tier-social-accent);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .ods-focus-title {
+      margin: 0;
+      font-size: var(--subhead-size);
+      font-weight: 600;
+      color: var(--on-surface);
+    }
+
+    /* Simulator controls */
+    .sim-controls {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: var(--space-md);
+      align-items: end;
+    }
+
+    .control-stack {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .slider-pair {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 88px;
+      gap: var(--space-sm);
+      align-items: center;
+    }
+
+    .range-input {
+      width: 100%;
+      accent-color: var(--primary);
+      cursor: pointer;
+      height: 24px;
+    }
+
+    .select-input {
+      height: 44px;
+      padding: 0 var(--space-xl) 0 var(--space-md);
+      background-color: var(--background);
+      border: var(--rule);
+      border-bottom: var(--field-rule);
+      border-radius: var(--rounded);
+      color: var(--on-surface);
+      font-size: var(--body-size);
+      width: 100%;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-sm);
+    }
+
+    .kpi-tile {
+      background-color: var(--background);
+      border: var(--rule);
+      border-bottom: 2px solid var(--primary);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .kpi-tile.is-green {
+      border-bottom-color: var(--tier-social-accent);
+    }
+
+    .kpi-label {
+      font-family: var(--font-label);
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--on-surface-variant);
+    }
+
+    .kpi-value {
+      font-family: var(--font-label);
+      font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);
+      font-weight: 400;
+      color: var(--on-surface);
+      overflow-wrap: break-word;
+    }
+
+    .kpi-sub {
+      font-size: 0.75rem;
+      color: var(--on-surface-variant);
+    }
+
+    .sim-footnote {
+      margin: 0;
+      font-size: 0.75rem;
+      color: var(--on-surface-variant);
+      border-top: var(--rule);
+      padding-top: var(--space-sm);
+    }
+
+    .canvas-footer {
+      border-top: var(--rule);
+      padding-top: var(--space-md);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      font-size: 0.75rem;
+      color: var(--on-surface-variant);
+    }
+
+    /* Responsive adaptations */
+    @media (max-width: 1080px) {
+      .canvas-header {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .header-meta, .ods-header-group {
+        align-items: flex-start;
+      }
+
+      .ods-badges-row, .pillar-icons-strip {
+        justify-content: flex-start;
+      }
+
+      .grid-social {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid-business {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: auto;
+      }
+
+      .block-socios,
+      .block-actividades,
+      .block-recursos,
+      .block-propuesta,
+      .block-relacion,
+      .block-canales {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .block-propuesta {
+        grid-column: 1 / -1;
+        order: -1;
+      }
+
+      .workspace-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-shell {
+        padding: var(--space-sm);
+        gap: var(--space-md);
+      }
+
+      .tier-section, .panel-card, .canvas-toolbar {
+        padding: var(--space-sm);
+      }
+
+      .grid-social,
+      .grid-business,
+      .grid-finance,
+      .sim-controls,
+      .kpi-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .block-propuesta {
+        grid-column: auto;
+      }
+
+      .block-scroll {
+        max-height: 190px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <!-- HEADER -->
+    <header class="canvas-header">
+      <div>
+        <div class="brand-eyebrow">
+          <span>Social Business Model Canvas</span>
+          <span aria-hidden="true">·</span>
+          <span>12 Bloques · 3 Niveles</span>
+        </div>
+        <h1 class="canvas-title"><strong>ECORUTA IoT</strong>: Reciclaje Inteligente con Impacto Social</h1>
+        <p class="canvas-subtitle">
+          Arquitectura estratégica de economía circular basada en nodos IoT (Arduino y sensores) para optimizar la recolección municipal e impulsar el empleo verde digno de gestores ambientales.
+        </p>
+      </div>
+
+      <div class="header-meta">
+        <div class="ods-header-group">
+          <p class="mono-kicker">Alineación ODS (clic para explorar)</p>
+          <div class="ods-badges-row" role="group" aria-label="Objetivos de Desarrollo Sostenible">
+            <button type="button" class="ods-pill ods-8 is-selected" data-ods="8" onclick="selectOds('8')" title="ODS 8: Trabajo decente y crecimiento económico">
+              <span class="ods-pill-num">8</span>
+              <span class="ods-pill-tag">Empleo</span>
+            </button>
+            <button type="button" class="ods-pill ods-9" data-ods="9" onclick="selectOds('9')" title="ODS 9: Industria, innovación e infraestructura">
+              <span class="ods-pill-num">9</span>
+              <span class="ods-pill-tag">Innov.</span>
+            </button>
+            <button type="button" class="ods-pill ods-11" data-ods="11" onclick="selectOds('11')" title="ODS 11: Ciudades y comunidades sostenibles">
+              <span class="ods-pill-num">11</span>
+              <span class="ods-pill-tag">Ciudad</span>
+            </button>
+            <button type="button" class="ods-pill ods-12" data-ods="12" onclick="selectOds('12')" title="ODS 12: Producción y consumo responsables">
+              <span class="ods-pill-num">12</span>
+              <span class="ods-pill-tag">Circular</span>
+            </button>
+            <button type="button" class="ods-pill ods-13" data-ods="13" onclick="selectOds('13')" title="ODS 13: Acción por el clima">
+              <span class="ods-pill-num">13</span>
+              <span class="ods-pill-tag">Clima</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="pillar-icons-strip" aria-label="Pilares tecnológicos y sociales">
+          <span class="pillar-chip is-green"><i data-lucide="recycle" aria-hidden="true"></i>Reciclaje</span>
+          <span class="pillar-chip is-blue"><i data-lucide="radio" aria-hidden="true"></i>IoT</span>
+          <span class="pillar-chip is-blue"><i data-lucide="wifi" aria-hidden="true"></i>Wi-Fi</span>
+          <span class="pillar-chip is-green"><i data-lucide="hard-hat" aria-hidden="true"></i>Empleo</span>
+          <span class="pillar-chip is-green"><i data-lucide="sprout" aria-hidden="true"></i>Sostenibilidad</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- TOOLBAR -->
+    <section class="canvas-toolbar" aria-label="Controles del Canvas">
+      <div class="toolbar-group">
+        <div class="filter-tabs" role="tablist" aria-label="Filtrar por nivel del Canvas">
+          <button type="button" class="tab-btn is-active" data-tier="all" onclick="filterTier('all')">Vista Completa (12)</button>
+          <button type="button" class="tab-btn" data-tier="social" onclick="filterTier('social')">Impacto Social (4)</button>
+          <button type="button" class="tab-btn" data-tier="business" onclick="filterTier('business')">Modelo de Negocio (6)</button>
+          <button type="button" class="tab-btn" data-tier="finance" onclick="filterTier('finance')">Finanzas (2)</button>
+        </div>
+      </div>
+
+      <div class="toolbar-group">
+        <div class="search-field">
+          <label for="canvas-search" class="field-label">Buscar en los 12 bloques</label>
+          <input type="search" id="canvas-search" class="text-input" placeholder="Ej. Arduino, SaaS, empleo…" oninput="filterBlocksByQuery(this.value)">
+        </div>
+        <button type="button" class="btn-secondary" onclick="exportCanvasTxt()">
+          <i data-lucide="download" aria-hidden="true"></i>
+          Exportar Resumen
+        </button>
+        <button type="button" class="btn-secondary" id="reset-state-btn" onclick="resetCanvasState(this)">
+          <i data-lucide="rotate-ccw" aria-hidden="true"></i>
+          Restablecer
+        </button>
+      </div>
+    </section>
+
+    <!-- 3-TIER CANVAS BOARD -->
+    <section class="canvas-board" aria-label="Tablero del Social Business Model Canvas">
+
+      <!-- NIVEL 1: IMPACTO SOCIAL -->
+      <div class="tier-section tier-social" id="tier-social">
+        <div class="tier-banner">
+          <div class="tier-heading-wrap">
+            <span class="tier-badge">Nivel 1</span>
+            <h2 class="tier-title">Impacto Social</h2>
+          </div>
+          <p class="tier-caption">Propósito socioambiental · Bloques 01–04</p>
+        </div>
+
+        <div class="grid-social">
+          <!-- 01 Problema Social -->
+          <article class="canvas-block" id="block-card-problema" tabindex="0" onclick="selectBlock('problema')" onkeydown="handleBlockKey(event, 'problema')">
+            <div class="block-header">
+              <div class="block-title-group">
+                <span class="block-code">01 · Problema</span>
+                <h3 class="block-title">Problema Social</h3>
+              </div>
+              <span class="block-icon-wrap"><i data-lucide="alert-triangle" aria-hidden="true"></i></span>
+            </div>
+            <div class="block-scroll">
+              <p class="block-lead">Desbordamiento de residuos sólidos en puntos urbanos críticos.</p>
+              <ul class="block-list">
+                <li>Rutas de recolección fijas e ineficientes que generan rebalses y focos sanitarios.</li>
+                <li>Baja trazabilidad de materiales reciclables antes de llegar al relleno sanitario.</li>
+                <li>Informalidad laboral y falta de herramientas digitales para recicladores de base.</li>
+              </ul>
+              <div class="block-tags">
+                <span class="mini-tag">Rebalse urbano</span>
+                <span class="mini-tag">Informalidad</span>
+              </div>
+            </div>
+            <div class="block-footer">
+              <span class="status-pill" id="status-problema">Sin notas</span>
+              <span>Clic para inspeccionar</span>
+            </div>
+          </article>
+
+          <!-- 02 Beneficiarios -->
+          <article class="canvas-block" id="block-card-beneficiarios" tabindex="0" onclick="selectBlock('beneficiarios')" onkeydown="handleBlockKey(event, 'beneficiarios')">
+            <div class="block-header">
+              <div class="block-title-group">
+                <span class="block-code">02 · Actores</span>
+                <h3 class="block-title">Beneficiarios</h3>
+              </div>
+              <span class="block-icon-wrap"><i data-lucide="hard-hat" aria-hidden="true"></i></span>
+            </div>
+            <div class="block-scroll">
+              <p class="block-lead">Gestores Ambientales y comunidades urbanas atendidas.</p>
+              <ul class="block-list">
+                <li>Recicladores y gestores ambientales integrados a rutas inteligentes y seguras.</li>
+                <li>Equipos municipales de aseo urbano que reducen desplazamientos en vacío.</li>
+                <li>Vecinos y comercios con puntos limpios disponibles y sin desbordes.</li>
+              </ul>
+              <div class="block-tags">
+                <span class="mini-tag">Gestores Ambientales</span>
+                <span class="mini-tag">Ciudadanía</span>
+              </div>
+            </div>
+            <div class="block-footer">
+              <span class="status-pill" id="status-beneficiarios">Sin notas</span>
+              <span>Clic para inspeccionar</span>
+            </div>
+          </article>
+
+          <!-- 03 Impacto Social -->
+          <article class="canvas-block" id="block-card-impacto" tabindex="0" onclick="selectBlock('impacto')" onkeydown="handleBlockKey(event, 'impacto')">
+            <div class="block-header">
+              <div class="block-title-group">
+                <span class="block-code">03 · Transformación</span>
+                <h3 class="block-title">Impacto Social</h3>
+              </div>
+              <span class="block-icon-wrap"><i data-lucide="sprout" aria-hidden="true"></i></span>
+            </div>
+            <div class="block-scroll">
+              <p class="block-lead">Empleo verde digno y mayor tasa de recuperación circular.</p>
+              <ul class="block-list">
+                <li>Formalización e incremento de ingresos por tonelada recuperada con menor esfuerzo físico.</li>
+                <li>Reducción de emisiones de CO₂ al optimizar rutas de recolección mediante telemetría.</li>
+                <li>Cultura ciudadana medible de separación en origen con métricas públicas.</li>
+              </ul>
+              <div class="block-tags">
+                <span class="mini-tag">Empleo verde</span>
+                <span class="mini-tag">Economía circular</span>
+              </div>
+            </div>
+            <div class="block-footer">
+              <span class="status-pill" id="status-impacto">Sin notas</span>
+              <span>Clic para inspeccionar</span>
+            </div>
+          </article>
+
+          <!-- 04 ODS -->
+          <article class="canvas-block" id="block-card-ods" tabindex="0" onclick="selectBlock('ods')" onkeydown="handleBlockKey(event, 'ods')">
+            <div class="block-header">
+              <div class="block-title-group">
+                <span class="block-code">04 · Agenda 2030</span>
+                <h3 class="block-title">ODS Alineados</h3>
+              </div>
+              <span class="block-icon-wrap"><i data-lucide="globe" aria-hidden="true"></i></span>
+            </div>
+            <div class="block-scroll">
+              <p class="block-lead">Contribución directa a 5 Objetivos de Desarrollo Sostenible:</p>
+              <div class="ods-mini-grid">
+                <span class="ods-mini-badge ods-8">ODS 8 · Empleo</span>
+                <span class="ods-mini-badge ods-9">ODS 9 · IoT</span>
+                <span class="ods-mini-badge ods-11">ODS 11 · Ciudades</span>
+                <span class="ods-mini-badge ods-12">ODS 12 · Circular</span>
+                <span class="ods-mini-badge ods-13">ODS 13 · Clima</span>
+              </div>
+              <ul class="block-list block-ods-list">
+                <li>Indicadores auditables de empleo digno, innovación urbana y reducción de huella.</li>
+              </ul>
+            </div>
+            <div class="block-footer">
+              <span class="status-pill" id="status-ods">Sin notas</span>
+              <span>Clic para inspeccionar</span>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- NIVEL 2: MODELO DE NEGOCIO -->
+      <div class="tier-section tier-business" id="tier-business">
+        <div class="tier-banner">
+          <div class="tier-heading-wrap">
+            <span class="tier-badge">Nivel 2</span>
+            <h2 class="tier-title">Modelo de Negocio</h2>
+          </div>
+          <p class="tier-caption">Operación, tecnología IoT y entrega de valor · Bloques 05–10</p>
+        </div>
+
+        <div class="grid-business">
+          <!-- 05 Socios Clave -->
+          <article class="canvas-block block-socios" id="block-card-socios" tabindex="0" onclick="selectBlock('socios')" onkeydown="handleBlockKey(event, 'socios')">
+            <div class="block-header">
+              <div class="block-title-group">
+                <span class="block-code">05 · Alianzas</span>
+                <h3 class="block-title">Socios Clave</h3>
+              </div>
+              <span class="block-icon-wrap"><i data-lucide="landmark" aria-hidden="true"></i></span>
+            </div>
+            <div class="block-scroll">
+              <p class="block-lead">Municipalidades y ecosistema local de reciclaje.</p>
+              <ul class="block-list">
+                <li>Municipalidades y direcciones de medio ambiente que habilitan puntos de acopio públicos.</li>
+                <li>Cooperativas y asociaciones de gestores ambientales locales.</li>
+                <li>Centros de acopio, valorizadores e industria recicladora compradora de material.</li>
+                <li>Proveedores de electrónica abierta y conectividad Wi-Fi/IoT municipal.</li>
+              </ul>
+              <div class="block-tags">
+                <span class="mini-tag">Municipalidades</span>
+                <span class="mini-tag">Cooperativas</span>
+              </div>
+            </div>
+            <div class="block-footer">
+              <span class="status-pill" id="status-socios">Sin notas</span>
+              <span>Inspeccionar</span>
+            </div>
+          </article>
+
+          <!-- 06 Actividades Clave -->
+          <article class="canvas-block block-actividades" id="block-card-actividades" tabindex="0" onclick="selectBlock('actividades')" onkeydown="handleBlockKey(event, 'actividades')">
+            <div class="block-header">
+              <div class="block-title-group">
+                <span class="block-code">06 · Operación</span>
+                <h3 class="block-title">Actividades Clave</h3>
+              </div>
+              <span class="block-icon-wrap"><i data-lucide="wrench" aria-hidden="true"></i></span>
+            </div>
+            <div class="block-scroll">
+              <p class="block-lead">Instalación IoT, calibración y gestión de rutas.</p>
+              <ul class="block-list">
+                <li>Despliegue e instalación de módulos sensores en contenedores y puntos limpios.</li>
+                <li>Mantenimiento preventivo, actualización de firmware y monitoreo telemétrico.</li>
+                <li>Capacitación técnica a gestores ambientales en uso de la plataforma de rutas.</li>
+              </ul>
+              <div class="block-tags">
+                <span class="mini-tag">Instalación IoT</span>
+                <span class="mini-tag">Capacitación</span>
+              </div>
+            </div>
+            <div class="block-footer">
+              <span class="status-pill" id="status-actividades">Sin notas</span>
+              <span>Inspeccionar</span>
+            </div>
+          </article>
+
+          <!-- 07 Recursos Clave -->
+          <article class="canvas-block block-recursos" id="block-card-recursos" tabindex="0" onclick="selectBlock('recursos')" onkeydown="handleBlockKey(event, 'recursos')">
+            <div class="block-header">
+              <div class="block-title-group">
+                <span class="block-code">07 · Activos</span>
+                <h3 class="block-title">Recursos Clave</h3>
+              </div>
+              <span class="block-icon-wrap"><i data-lucide="cpu" aria-hidden="true"></i></span>
+            </div>
+            <div class="block-scroll">
+              <p class="block-lead">Arduino, sensores de nivel y conectividad Wi-Fi.</p>
+              <ul class="block-list">
+                <li>Placas Arduino / microcontroladores de bajo consumo y sensores ultrasónicos de llenado.</li>
+                <li>Infraestructura Wi-Fi / IoT para transmisión continua de alertas de saturación.</li>
+                <li>Plataforma web en la nube con algoritmo de enrutamiento y tablero analítico.</li>
+              </ul>
+              <div class="block-tags">
+                <span class="mini-tag">Arduino y sensores</span>
+                <span class="mini-tag">Wi-Fi / Nube</span>
+              </div>
+            </div>
+            <div class="block-footer">
+              <span class="status-pill" id="status-recursos">Sin notas</span>
+              <span>Inspeccionar</span>
+            </div>
+          </article>
+
+          <!-- 08 Propuesta de Valor (CENTRO DESTACADO) -->
+          <article class="canvas-block block-propuesta is-selected" id="block-card-propuesta" tabindex="0" onclick="selectBlock('propuesta')" onkeydown="handleBlockKey(event, 'propuesta')">
+            <div class="block-header">
+              <div class="block-title-group">
+                <span class="block-code">08 · Núcleo Central</span>
+                <h3 class="block-title">Propuesta de Valor</h3>
+              </div>
+              <span class="block-icon-wrap"><i data-lucide="recycle" aria-hidden="true"></i></span>
+            </div>
+            <div class="block-scroll">
+              <p class="block-lead">Reciclaje inteligente con empleo digno basado en telemetría IoT en tiempo real.</p>
+              <ul class="block-list">
+                <li><strong>Prevención de desbordamientos:</strong> los contenedores comunican su nivel de llenado vía Wi-Fi antes de colapsar.</li>
+                <li><strong>Rutas dinámicas eficientes:</strong> reduce kilómetros recorridos, combustible y tiempos muertos de recolección.</li>
+                <li><strong>Inclusión productiva:</strong> asigna cargas verificadas a gestores ambientales formalizados, asegurando ingresos estables.</li>
+                <li><strong>Trazabilidad ESG municipal:</strong> entrega datos confiables por zona, tipo de residuo recuperado e impacto ambiental.</li>
+              </ul>
+              <div class="block-tags">
+                <span class="mini-tag">Reciclaje inteligente</span>
+                <span class="mini-tag">Empleo digno</span>
+                <span class="mini-tag">Datos en tiempo real</span>
+              </div>
+            </div>
+            <div class="block-footer">
+              <span class="status-pill" id="status-propuesta">Sin notas</span>
+              <span>Bloque central</span>
+            </div>
+          </article>
+
+          <!-- 09 Relación -->
+          <article class="canvas-block block-relacion" id="block-card-relacion" tabindex="0" onclick="selectBlock('relacion')" onkeydown="handleBlockKey(event, 'relacion')">
+            <div class="block-header">
+              <div class="block-title-group">
+                <span class="block-code">09 · Vínculo</span>
+                <h3 class="block-title">Relación</h3>
+              </div>
+              <span class="block-icon-wrap"><i data-lucide="bar-chart-3" aria-hidden="true"></i></span>
+            </div>
+            <div class="block-scroll">
+              <p class="block-lead">Soporte continuo y reportes de desempeño e impacto.</p>
+              <ul class="block-list">
+                <li>Mesa de soporte técnico remoto y en terreno para hardware IoT y plataforma.</li>
+                <li>Reportes periódicos automatizados para municipalidades (toneladas, ahorro en rutas y CO₂ evitado).</li>
+                <li>Acompañamiento comunitario y seguimiento laboral con los gestores ambientales.</li>
+              </ul>
+              <div class="block-tags">
+                <span class="mini-tag">Soporte técnico</span>
+                <span class="mini-tag">Reportes ESG</span>
+              </div>
+            </div>
+            <div class="block-footer">
+              <span class="status-pill" id="status-relacion">Sin notas</span>
+              <span>Inspeccionar</span>
+            </div>
+          </article>
+
+          <!-- 10 Canales -->
+          <article class="canvas-block block-canales" id="block-card-canales" tabindex="0" onclick="selectBlock('canales')" onkeydown="handleBlockKey(event, 'canales')">
+            <div class="block-header">
+              <div class="block-title-group">
+                <span class="block-code">10 · Distribución</span>
+                <h3 class="block-title">Canales</h3>
+              </div>
+              <span class="block-icon-wrap"><i data-lucide="globe-2" aria-hidden="true"></i></span>
+            </div>
+            <div class="block-scroll">
+              <p class="block-lead">Venta directa institucional y plataforma web operativa.</p>
+              <ul class="block-list">
+                <li>Venta directa B2G/B2B mediante convenios municipales, licitaciones y pilotos distritales.</li>
+                <li>Plataforma web central para monitoreo de sensores, alertas de llenado y despacho de rutas.</li>
+                <li>Portal simplificado móvil para gestores ambientales y comunicación ciudadana.</li>
+              </ul>
+              <div class="block-tags">
+                <span class="mini-tag">Venta directa</span>
+                <span class="mini-tag">Plataforma web</span>
+              </div>
+            </div>
+            <div class="block-footer">
+              <span class="status-pill" id="status-canales">Sin notas</span>
+              <span>Inspeccionar</span>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- NIVEL 3: FINANZAS -->
+      <div class="tier-section tier-finance" id="tier-finance">
+        <div class="tier-banner">
+          <div class="tier-heading-wrap">
+            <span class="tier-badge">Nivel 3</span>
+            <h2 class="tier-title">Finanzas</h2>
+          </div>
+          <p class="tier-caption">Sostenibilidad económica · Bloques 11–12</p>
+        </div>
+
+        <div class="grid-finance">
+          <!-- 11 Estructura de Costos -->
+          <article class="canvas-block" id="block-card-costos" tabindex="0" onclick="selectBlock('costos')" onkeydown="handleBlockKey(event, 'costos')">
+            <div class="block-header">
+              <div class="block-title-group">
+                <span class="block-code">11 · Egresos</span>
+                <h3 class="block-title">Estructura de Costos</h3>
+              </div>
+              <span class="block-icon-wrap"><i data-lucide="layers" aria-hidden="true"></i></span>
+            </div>
+            <div class="block-scroll">
+              <p class="block-lead">Hardware, software, capacitación e instalación en campo.</p>
+              <ul class="block-list">
+                <li><strong>Hardware:</strong> kits Arduino, sensores de ultrasonido, carcasas protectoras y alimentación eléctrica.</li>
+                <li><strong>Software:</strong> desarrollo web, servidores en la nube, almacenamiento de telemetría y ciberseguridad.</li>
+                <li><strong>Capacitación e instalación:</strong> montaje en contenedores, pruebas de conectividad Wi-Fi y formación a gestores.</li>
+              </ul>
+              <div class="block-tags">
+                <span class="mini-tag">Hardware IoT</span>
+                <span class="mini-tag">Software SaaS</span>
+                <span class="mini-tag">Capacitación</span>
+                <span class="mini-tag">Instalación</span>
+              </div>
+            </div>
+            <div class="block-footer">
+              <span class="status-pill" id="status-costos">Sin notas</span>
+              <span>Clic para inspeccionar</span>
+            </div>
+          </article>
+
+          <!-- 12 Fuentes de Ingreso -->
+          <article class="canvas-block" id="block-card-ingresos" tabindex="0" onclick="selectBlock('ingresos')" onkeydown="handleBlockKey(event, 'ingresos')">
+            <div class="block-header">
+              <div class="block-title-group">
+                <span class="block-code">12 · Captura de Valor</span>
+                <h3 class="block-title">Fuentes de Ingreso</h3>
+              </div>
+              <span class="block-icon-wrap"><i data-lucide="coins" aria-hidden="true"></i></span>
+            </div>
+            <div class="block-scroll">
+              <p class="block-lead">Venta, leasing, suscripción SaaS y comisión por reciclaje.</p>
+              <ul class="block-list">
+                <li><strong>Venta directa:</strong> adquisición única de nodos IoT instalados llave en mano para municipalidades.</li>
+                <li><strong>Leasing operativo:</strong> cuota mensual por equipamiento IoT sin barrera de inversión inicial.</li>
+                <li><strong>SaaS:</strong> licencia mensual por acceso a la plataforma web, alertas y reportes de trazabilidad.</li>
+                <li><strong>Comisión de reciclaje:</strong> porcentaje por volumen de material recuperado y comercializado.</li>
+              </ul>
+              <div class="block-tags">
+                <span class="mini-tag">Venta</span>
+                <span class="mini-tag">Leasing</span>
+                <span class="mini-tag">SaaS</span>
+                <span class="mini-tag">Comisión</span>
+              </div>
+            </div>
+            <div class="block-footer">
+              <span class="status-pill" id="status-ingresos">Sin notas</span>
+              <span>Clic para inspeccionar</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOWER INTERACTIVE WORKSPACE -->
+    <section class="workspace-grid" aria-label="Inspector de bloque y simulador operativo">
+      <!-- Left: Block Inspector & Editable Notes -->
+      <div class="panel-card" id="inspector-panel">
+        <div class="panel-head">
+          <div>
+            <p class="mono-kicker" id="inspector-tier-kicker">Nivel 2 · Modelo de Negocio</p>
+            <h2 class="panel-title" id="inspector-title">08 · Propuesta de Valor</h2>
+          </div>
+          <div class="inspector-meta-row">
+            <button type="button" class="btn-secondary" id="toggle-validate-btn" onclick="toggleBlockValidated()">
+              <i data-lucide="check-circle-2" aria-hidden="true"></i>
+              <span id="validate-btn-label">Marcar como validado</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="detail-box" id="inspector-detail-box">
+          <p class="block-lead" id="inspector-summary"></p>
+          <p id="inspector-deep-dive" class="block-detail-text"></p>
+          <div id="inspector-metrics-wrap"></div>
+        </div>
+
+        <form class="notes-form" onsubmit="saveBlockNote(event)">
+          <label for="block-note-input" class="field-label">Notas de campo o hipótesis para este bloque (se guardan automáticamente en tu sesión)</label>
+          <textarea id="block-note-input" class="notes-textarea" placeholder="Escribe acuerdos con municipalidades, supuestos de costos Arduino, metas de gestores o comentarios para tu presentación…"></textarea>
+          <div class="notes-actions">
+            <span class="inline-feedback" id="note-feedback" role="status" aria-live="polite"></span>
+            <button type="submit" class="btn-primary">
+              <i data-lucide="save" aria-hidden="true"></i>
+              Guardar nota del bloque
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Right: ODS Explorer + Operational Scenario Estimator -->
+      <div class="panel-card">
+        <div class="panel-head">
+          <div>
+            <p class="mono-kicker">Explorador ODS y Escenario Operativo</p>
+            <h2 class="panel-title">Impacto ODS y Escala de Piloto</h2>
+          </div>
+        </div>
+
+        <div class="ods-focus-card" id="ods-focus-card">
+          <p class="mono-kicker" id="ods-focus-code">ODS 8 · Trabajo Decente y Crecimiento Económico</p>
+          <h3 class="ods-focus-title" id="ods-focus-headline">Formalización y mejora de ingresos para gestores ambientales</h3>
+          <p id="ods-focus-desc" class="ods-focus-body">
+            ECORUTA IoT dignifica la labor de recolección al reemplazar recorridos improvisados por rutas predecibles con demanda confirmada, elevando productividad y seguridad laboral.
+          </p>
+        </div>
+
+        <div class="sim-controls">
+          <div class="control-stack">
+            <label for="slider-nodes" class="field-label">Contenedores con sensor IoT</label>
+            <div class="slider-pair">
+              <input type="range" id="slider-nodes" class="range-input" min="10" max="300" step="10" value="60" oninput="syncNodesFromSlider(this.value)">
+              <input type="number" id="input-nodes" class="text-input" min="10" max="300" step="10" value="60" oninput="syncNodesFromNumber(this.value)" aria-label="Cantidad de contenedores con sensor IoT">
+            </div>
+          </div>
+
+          <div class="control-stack">
+            <label for="select-revenue-mode" class="field-label">Esquema de ingresos prioritario</label>
+            <select id="select-revenue-mode" class="select-input" onchange="changeRevenueMode(this.value)">
+              <option value="hibrido">Híbrido (Leasing + SaaS + Comisión)</option>
+              <option value="saas">SaaS Municipal + Comisión reciclaje</option>
+              <option value="venta">Venta directa de kits + Soporte anual</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-tile is-green">
+            <span class="kpi-label">Gestores ambientales integrados</span>
+            <span class="kpi-value" id="kpi-gestores">12</span>
+            <span class="kpi-sub">Estimación referencial (1 gestor / 5 nodos)</span>
+          </div>
+          <div class="kpi-tile is-green">
+            <span class="kpi-label">Material recuperado estimado</span>
+            <span class="kpi-value" id="kpi-tons">18,0 t/mes</span>
+            <span class="kpi-sub">Con prevención de desborde por alerta</span>
+          </div>
+          <div class="kpi-tile">
+            <span class="kpi-label">Cobertura de costos operativos</span>
+            <span class="kpi-value" id="kpi-model-focus">Recurrente</span>
+            <span class="kpi-sub" id="kpi-model-desc">Combina leasing IoT, SaaS y comisión</span>
+          </div>
+          <div class="kpi-tile">
+            <span class="kpi-label">Despliegue de hardware base</span>
+            <span class="kpi-value" id="kpi-kits">60 kits</span>
+            <span class="kpi-sub">Arduino + sensor ultrasónico + módulo Wi-Fi</span>
+          </div>
+        </div>
+
+        <p class="sim-footnote">
+          Nota metodológica: las cifras del explorador son parámetros referenciales de planificación para analizar el escalamiento entre hardware (Costos), gestores (Beneficiarios) y modelo comercial (Ingresos).
+        </p>
+      </div>
+    </section>
+
+    <footer class="canvas-footer">
+      <span>Fuente base: Diseño Visual del Social Business Model Canvas — ECORUTA IoT (Reciclaje Inteligente con Impacto Social).</span>
+      <span>Paleta institucional aplicada: Verde #2E7D32 / #D9F2D9 · Azul #1565C0 / #DCEEFF · Gris #F2F2F2.</span>
+    </footer>
+  </main>
+
+  <api-shim></api-shim>
+  <script>
+    const BLOCK_DATA = {
+      problema: {
+        code: `01`,
+        tier: `social`,
+        tierLabel: `Nivel 1 · Impacto Social`,
+        title: `Problema Social`,
+        summary: `Desbordamiento de residuos sólidos urbanos y precariedad operativa en la cadena de reciclaje.`,
+        deepDive: `Los puntos limpios y contenedores municipales suelen llenarse de manera desigual según eventos o densidad comercial. Sin sensores de nivel, las rutas fijas llegan tarde a puntos críticos (generando desbordes, malos olores y pérdida de material recuperable) y visitan innecesariamente contenedores vacíos, mientras los gestores ambientales trabajan sin información anticipada.`,
+        highlights: [
+          `Desbordamiento de residuos en vía pública`,
+          `Falta de visibilidad del nivel de llenado en tiempo real`,
+          `Informalidad e ingresos inestables de recicladores de base`
+        ]
+      },
+      beneficiarios: {
+        code: `02`,
+        tier: `social`,
+        tierLabel: `Nivel 1 · Impacto Social`,
+        title: `Beneficiarios`,
+        summary: `Gestores Ambientales como protagonistas de la operación, junto a municipios y comunidades.`,
+        deepDive: `El modelo sitúa a los Gestores Ambientales en el centro del impacto social, integrándolos con herramientas simples para planificar su recolección diaria. De forma complementaria, beneficia a los departamentos municipales de aseo y a la ciudadanía que disfruta de barrios más limpios.`,
+        highlights: [
+          `Gestores Ambientales y cooperativas de reciclaje`,
+          `Gobiernos locales y cuadrillas de recolección`,
+          `Comunidades urbanas y comercios generadores`
+        ]
+      },
+      impacto: {
+        code: `03`,
+        tier: `social`,
+        tierLabel: `Nivel 1 · Impacto Social`,
+        title: `Impacto Social`,
+        summary: `Generación de empleo verde digno, formalizado y respaldado por eficiencia ambiental medible.`,
+        deepDive: `Al conectar la telemetría IoT con rutas optimizadas, cada gestor recupera mayor volumen de residuos limpios en menos horas, dignificando su oficio. El municipio reduce viajes improductivos y desvía residuos valorizables de los rellenos sanitarios.`,
+        highlights: [
+          `Empleo verde con mejores condiciones e ingresos`,
+          `Reducción de CO₂ por optimización de rutas`,
+          `Incremento sostenido en tasas locales de reciclaje`
+        ]
+      },
+      ods: {
+        code: `04`,
+        tier: `social`,
+        tierLabel: `Nivel 1 · Impacto Social`,
+        title: `ODS Alineados (8, 9, 11, 12 y 13)`,
+        summary: `Alineación integral con la Agenda 2030 mediante cinco Objetivos de Desarrollo Sostenible.`,
+        deepDive: `ECORUTA IoT articula impacto laboral (ODS 8), infraestructura tecnológica accesible basada en Arduino y sensores (ODS 9), gestión urbana limpia (ODS 11), economía circular (ODS 12) y mitigación climática por reducción de recorridos y vertederos (ODS 13).`,
+        highlights: [
+          `ODS 8: Empleo verde y trabajo decente`,
+          `ODS 9: Innovación IoT de bajo costo`,
+          `ODS 11, 12 y 13: Ciudades limpias, circularidad y acción climática`
+        ]
+      },
+      socios: {
+        code: `05`,
+        tier: `business`,
+        tierLabel: `Nivel 2 · Modelo de Negocio`,
+        title: `Socios Clave`,
+        summary: `Municipalidades, asociaciones de gestores ambientales y compradores de material reciclado.`,
+        deepDive: `Las municipalidades aportan legitimidad, despliegue territorial y acceso a puntos de acopio públicos. Las cooperativas de gestores aseguran operación inclusiva, mientras que los centros de acopio e industrias valorizadoras garantizan la compra continua del material recuperado.`,
+        highlights: [
+          `Municipalidades y gobiernos distritales`,
+          `Asociaciones de gestores ambientales`,
+          `Centros de acopio e industria recicladora`
+        ]
+      },
+      actividades: {
+        code: `06`,
+        tier: `business`,
+        tierLabel: `Nivel 2 · Modelo de Negocio`,
+        title: `Actividades Clave`,
+        summary: `Instalación IoT en contenedores, calibración de sensores, soporte técnico y capacitación.`,
+        deepDive: `Comprende el ensamblaje e instalación física de nodos Arduino en puntos de recolección, pruebas de enlace Wi-Fi, mantenimiento preventivo en terreno, desarrollo continuo de la plataforma web y formación práctica a gestores y operadores municipales.`,
+        highlights: [
+          `Instalación IoT y calibración en campo`,
+          `Monitoreo de red y mantenimiento de nodos`,
+          `Capacitación digital a gestores ambientales`
+        ]
+      },
+      recursos: {
+        code: `07`,
+        tier: `business`,
+        tierLabel: `Nivel 2 · Modelo de Negocio`,
+        title: `Recursos Clave`,
+        summary: `Hardware abierto (Arduino y sensores), conectividad Wi-Fi y plataforma web de telemetría.`,
+        deepDive: `La combinación de placas Arduino con sensores de distancia/nivel mantiene bajo el costo por punto monitoreado y facilita el reemplazo modular. Sobre este hardware opera la infraestructura Wi-Fi/IoT y el software analítico que transforma lecturas de llenado en rutas accionables.`,
+        highlights: [
+          `Arduino y sensores de llenado ultrasónicos`,
+          `Conectividad Wi-Fi y alimentación autónoma`,
+          `Plataforma web con tablero de alertas y rutas`
+        ]
+      },
+      propuesta: {
+        code: `08`,
+        tier: `business`,
+        tierLabel: `Nivel 2 · Modelo de Negocio`,
+        title: `Propuesta de Valor`,
+        summary: `Reciclaje inteligente con empleo digno: evita desbordes, optimiza rutas y genera trazabilidad.`,
+        deepDive: `Bloque central del Canvas: une tecnología IoT accesible con inclusión laboral. Permite a las ciudades anticipar el llenado de contenedores, reducir costos de combustible y despacho, y ofrecer a los gestores ambientales rutas predecibles con material limpio y trazable.`,
+        highlights: [
+          `Detección temprana de llenado antes del desborde`,
+          `Asignación de rutas inteligentes para empleo digno`,
+          `Reportes verificables de impacto ambiental municipal`
+        ]
+      },
+      relacion: {
+        code: `09`,
+        tier: `business`,
+        tierLabel: `Nivel 2 · Modelo de Negocio`,
+        title: `Relación`,
+        summary: `Soporte técnico cercano y entrega continua de reportes operativos y de impacto.`,
+        deepDive: `Se construye confianza a largo plazo con municipalidades mediante soporte ágil ante fallos de sensores y reportes mensuales de gestión (toneladas recuperadas, puntos críticos y ahorro de rutas). Con los gestores se mantiene acompañamiento continuo y canales directos de ayuda.`,
+        highlights: [
+          `Mesa de soporte técnico para hardware y software`,
+          `Reportes periódicos de trazabilidad e impacto`,
+          `Acompañamiento operativo a gestores ambientales`
+        ]
+      },
+      canales: {
+        code: `10`,
+        tier: `business`,
+        tierLabel: `Nivel 2 · Modelo de Negocio`,
+        title: `Canales`,
+        summary: `Venta directa institucional (B2G/B2B) y plataforma web de operación y monitoreo.`,
+        deepDive: `La captación de clientes se realiza por venta directa y pilotos demostrativos con municipalidades y grandes generadores. La entrega diaria del servicio ocurre en la plataforma web, donde operadores consultan mapas de llenado y gestores reciben rutas priorizadas.`,
+        highlights: [
+          `Venta directa a municipalidades y empresas`,
+          `Plataforma web de monitoreo y enrutamiento`,
+          `Pilotos demostrativos en zonas de alto flujo`
+        ]
+      },
+      costos: {
+        code: `11`,
+        tier: `finance`,
+        tierLabel: `Nivel 3 · Finanzas`,
+        title: `Estructura de Costos`,
+        summary: `Hardware IoT, desarrollo y alojamiento de software, capacitación e instalación en terreno.`,
+        deepDive: `Los egresos principales se concentran en la adquisición y encapsulado de placas Arduino y sensores, servidores e infraestructura de la plataforma web, logística de instalación en contenedores municipales y programas de capacitación para gestores ambientales.`,
+        highlights: [
+          `Hardware: Arduino, sensores y carcasas protectoras`,
+          `Software: nube, base de datos y evolución web`,
+          `Capacitación e instalación en puntos urbanos`
+        ]
+      },
+      ingresos: {
+        code: `12`,
+        tier: `finance`,
+        tierLabel: `Nivel 3 · Finanzas`,
+        title: `Fuentes de Ingreso`,
+        summary: `Modelo diversificado: venta directa, leasing de hardware, suscripción SaaS y comisión de reciclaje.`,
+        deepDive: `Combina ingreso inmediato por venta de kits IoT con ingresos recurrentes mediante leasing operativo (arriendo mensual para facilitar presupuestos municipales), suscripción SaaS por uso de la plataforma de analítica y comisiones ligadas al volumen de material reciclado recuperado.`,
+        highlights: [
+          `Venta directa de equipamiento IoT instalado`,
+          `Leasing mensual de nodos para reducir barrera de entrada`,
+          `SaaS (plataforma web) y comisión por reciclaje`
+        ]
+      }
+    };
+
+    const ODS_DATA = {
+      '8': {
+        code: `ODS 8 · Trabajo Decente y Crecimiento Económico`,
+        headline: `Formalización y mejora de ingresos para gestores ambientales`,
+        desc: `ECORUTA IoT dignifica la labor de recolección al reemplazar recorridos improvisados por rutas predecibles con demanda confirmada, elevando productividad y seguridad laboral.`,
+        colorVar: `var(--ods-8)`
+      },
+      '9': {
+        code: `ODS 9 · Industria, Innovación e Infraestructura`,
+        headline: `Infraestructura urbana inteligente basada en hardware abierto`,
+        desc: `Integra placas Arduino, sensores de nivel y conectividad Wi-Fi para modernizar la gestión de residuos a un costo accesible para municipios locales.`,
+        colorVar: `var(--ods-9)`
+      },
+      '11': {
+        code: `ODS 11 · Ciudades y Comunidades Sostenibles`,
+        headline: `Entornos urbanos limpios sin desbordamiento de contenedores`,
+        desc: `Las alertas tempranas evitan la saturación de puntos limpios en barrios y espacios públicos, mejorando salubridad y calidad de vida urbana.`,
+        colorVar: `var(--ods-11)`
+      },
+      '12': {
+        code: `ODS 12 · Producción y Consumo Responsables`,
+        headline: `Trazabilidad real y mayor recuperación de materiales valorizables`,
+        desc: `Monitorea volúmenes recuperados por zona para fortalecer la economía circular y reducir el envío de materiales reciclables a vertederos.`,
+        colorVar: `var(--ods-12)`
+      },
+      '13': {
+        code: `ODS 13 · Acción por el Clima`,
+        headline: `Menos kilómetros en vacío y menor emisión de gases de efecto invernadero`,
+        desc: `El enrutamiento dinámico recorta combustible en recolección y evita emisiones de metano asociadas a residuos desviados del relleno sanitario.`,
+        colorVar: `var(--ods-13)`
+      }
+    };
+
+    const DEFAULT_STATE = {
+      selectedBlockId: `propuesta`,
+      selectedOds: `8`,
+      activeTier: `all`,
+      nodesCount: 60,
+      revenueMode: `hibrido`,
+      notes: {},
+      validated: {}
+    };
+
+    let appState = JSON.parse(JSON.stringify(DEFAULT_STATE));
+
+    async function persistState() {
+      try {
+        if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === 'function') {
+          await window.notebookAppApi.setAppState(appState);
+        }
+      } catch (err) {
+        // Ignore persistence transport errors safely
+      }
+    }
+
+    function renderBlockStatuses() {
+      Object.keys(BLOCK_DATA).forEach(function (blockId) {
+        const statusEl = document.getElementById(`status-` + blockId);
+        if (!statusEl) return;
+        const isValidated = Boolean(appState.validated[blockId]);
+        const hasNote = Boolean(appState.notes[blockId] && appState.notes[blockId].trim().length > 0);
+        if (isValidated) {
+          statusEl.textContent = hasNote ? `Validado · Con nota` : `Validado`;
+          statusEl.classList.add(`is-validated`);
+        } else {
+          statusEl.textContent = hasNote ? `Con nota` : `Sin notas`;
+          statusEl.classList.remove(`is-validated`);
+        }
+      });
+    }
+
+    function renderInspector() {
+      const id = BLOCK_DATA[appState.selectedBlockId] ? appState.selectedBlockId : `propuesta`;
+      const data = BLOCK_DATA[id];
+
+      Object.keys(BLOCK_DATA).forEach(function (key) {
+        const card = document.getElementById(`block-card-` + key);
+        if (card) {
+          card.classList.toggle(`is-selected`, key === id);
+        }
+      });
+
+      const kickerEl = document.getElementById(`inspector-tier-kicker`);
+      const titleEl = document.getElementById(`inspector-title`);
+      const summaryEl = document.getElementById(`inspector-summary`);
+      const deepEl = document.getElementById(`inspector-deep-dive`);
+      const metricsWrap = document.getElementById(`inspector-metrics-wrap`);
+      const noteInput = document.getElementById(`block-note-input`);
+      const validateLabel = document.getElementById(`validate-btn-label`);
+
+      if (kickerEl) kickerEl.textContent = data.tierLabel;
+      if (titleEl) titleEl.textContent = data.code + ` · ` + data.title;
+      if (summaryEl) summaryEl.textContent = data.summary;
+      if (deepEl) deepEl.textContent = data.deepDive;
+
+      if (metricsWrap) {
+        const listItems = data.highlights.map(function (item) {
+          return `<li>` + escapeHtml(item) + `</li>`;
+        }).join(``);
+        metricsWrap.innerHTML = `<ul class="block-list inspector-list">` + listItems + `</ul>`;
+      }
+
+      if (noteInput) {
+        noteInput.value = appState.notes[id] || ``;
+      }
+
+      if (validateLabel) {
+        validateLabel.textContent = appState.validated[id] ? `Validado (clic para revertir)` : `Marcar como validado`;
+      }
+    }
+
+    function escapeHtml(text) {
+      return String(text)
+        .replace(/&/g, `&amp;`)
+        .replace(/</g, `&lt;`)
+        .replace(/>/g, `&gt;`)
+        .replace(/"/g, `&quot;`);
+    }
+
+    function selectBlock(blockId) {
+      if (!BLOCK_DATA[blockId]) return;
+      appState.selectedBlockId = blockId;
+      const feedback = document.getElementById(`note-feedback`);
+      if (feedback) feedback.textContent = ``;
+      renderInspector();
+      persistState();
+    }
+
+    function handleBlockKey(event, blockId) {
+      if (event.key === `Enter` || event.key === ` `) {
+        event.preventDefault();
+        selectBlock(blockId);
+      }
+    }
+
+    function toggleBlockValidated() {
+      const id = appState.selectedBlockId;
+      appState.validated[id] = !appState.validated[id];
+      renderBlockStatuses();
+      renderInspector();
+      const feedback = document.getElementById(`note-feedback`);
+      if (feedback) {
+        feedback.textContent = appState.validated[id] ? `Bloque marcado como validado.` : `Marca de validación removida.`;
+      }
+      persistState();
+    }
+
+    function saveBlockNote(event) {
+      event.preventDefault();
+      const id = appState.selectedBlockId;
+      const noteInput = document.getElementById(`block-note-input`);
+      const feedback = document.getElementById(`note-feedback`);
+      if (!noteInput) return;
+
+      appState.notes[id] = noteInput.value.trim();
+      renderBlockStatuses();
+      if (feedback) {
+        feedback.textContent = appState.notes[id]
+          ? `Nota guardada en "` + BLOCK_DATA[id].title + `".`
+          : `Nota vaciada.`;
+      }
+      persistState();
+    }
+
+    function filterTier(tier) {
+      appState.activeTier = tier;
+      const tabs = document.querySelectorAll(`.tab-btn`);
+      tabs.forEach(function (btn) {
+        btn.classList.toggle(`is-active`, btn.dataset.tier === tier);
+      });
+
+      const socialTier = document.getElementById(`tier-social`);
+      const businessTier = document.getElementById(`tier-business`);
+      const financeTier = document.getElementById(`tier-finance`);
+
+      if (socialTier) socialTier.classList.toggle(`is-hidden`, tier !== `all` && tier !== `social`);
+      if (businessTier) businessTier.classList.toggle(`is-hidden`, tier !== `all` && tier !== `business`);
+      if (financeTier) financeTier.classList.toggle(`is-hidden`, tier !== `all` && tier !== `finance`);
+
+      persistState();
+    }
+
+    function filterBlocksByQuery(rawQuery) {
+      const q = String(rawQuery || ``).trim().toLowerCase();
+      Object.keys(BLOCK_DATA).forEach(function (id) {
+        const card = document.getElementById(`block-card-` + id);
+        if (!card) return;
+        if (!q) {
+          card.classList.remove(`is-dimmed`);
+          return;
+        }
+        const text = card.textContent.toLowerCase();
+        const deep = BLOCK_DATA[id].deepDive.toLowerCase();
+        const note = (appState.notes[id] || ``).toLowerCase();
+        const matches = text.indexOf(q) !== -1 || deep.indexOf(q) !== -1 || note.indexOf(q) !== -1;
+        card.classList.toggle(`is-dimmed`, !matches);
+      });
+    }
+
+    function selectOds(odsNum) {
+      if (!ODS_DATA[odsNum]) return;
+      appState.selectedOds = odsNum;
+
+      const pills = document.querySelectorAll(`.ods-pill`);
+      pills.forEach(function (pill) {
+        pill.classList.toggle(`is-selected`, pill.dataset.ods === odsNum);
+      });
+
+      const info = ODS_DATA[odsNum];
+      const card = document.getElementById(`ods-focus-card`);
+      const codeEl = document.getElementById(`ods-focus-code`);
+      const titleEl = document.getElementById(`ods-focus-headline`);
+      const descEl = document.getElementById(`ods-focus-desc`);
+
+      if (card) card.style.borderLeftColor = info.colorVar;
+      if (codeEl) codeEl.textContent = info.code;
+      if (titleEl) titleEl.textContent = info.headline;
+      if (descEl) descEl.textContent = info.desc;
+
+      persistState();
+    }
+
+    function updateSimulatorCalculations() {
+      const nodes = Math.max(10, Math.min(300, Number(appState.nodesCount) || 60));
+      const mode = appState.revenueMode || `hibrido`;
+
+      const gestores = Math.max(2, Math.round(nodes / 5));
+      const tons = (nodes * 0.3).toFixed(1).replace(`.`, `,`);
+
+      const kpiGestores = document.getElementById(`kpi-gestores`);
+      const kpiTons = document.getElementById(`kpi-tons`);
+      const kpiFocus = document.getElementById(`kpi-model-focus`);
+      const kpiDesc = document.getElementById(`kpi-model-desc`);
+      const kpiKits = document.getElementById(`kpi-kits`);
+
+      if (kpiGestores) kpiGestores.textContent = String(gestores);
+      if (kpiTons) kpiTons.textContent = tons + ` t/mes`;
+      if (kpiKits) kpiKits.textContent = nodes + ` kits`;
+
+      if (kpiFocus && kpiDesc) {
+        if (mode === `saas`) {
+          kpiFocus.textContent = `SaaS + Reciclaje`;
+          kpiDesc.textContent = `Suscripción mensual web + comisión por tonelada`;
+        } else if (mode === `venta`) {
+          kpiFocus.textContent = `CAPEX Directo`;
+          kpiDesc.textContent = `Venta llave en mano de hardware + soporte`;
+        } else {
+          kpiFocus.textContent = `Recurrente`;
+          kpiDesc.textContent = `Combina leasing IoT, SaaS y comisión`;
+        }
+      }
+    }
+
+    function syncNodesFromSlider(val) {
+      const parsed = Math.max(10, Math.min(300, Number(val) || 60));
+      appState.nodesCount = parsed;
+      const numEl = document.getElementById(`input-nodes`);
+      if (numEl) numEl.value = parsed;
+      updateSimulatorCalculations();
+      persistState();
+    }
+
+    function syncNodesFromNumber(val) {
+      const parsed = Math.max(10, Math.min(300, Number(val) || 60));
+      appState.nodesCount = parsed;
+      const sliderEl = document.getElementById(`slider-nodes`);
+      if (sliderEl) sliderEl.value = parsed;
+      updateSimulatorCalculations();
+      persistState();
+    }
+
+    function changeRevenueMode(mode) {
+      appState.revenueMode = mode;
+      updateSimulatorCalculations();
+      persistState();
+    }
+
+    function exportCanvasTxt() {
+      const lines = [
+        `ECORUTA IoT: Reciclaje Inteligente con Impacto Social`,
+        `Social Business Model Canvas (12 Bloques · 3 Niveles)`,
+        `=======================================================`,
+        ``
+      ];
+
+      Object.keys(BLOCK_DATA).forEach(function (id) {
+        const b = BLOCK_DATA[id];
+        const status = appState.validated[id] ? `[VALIDADO]` : `[EN REVISIÓN]`;
+        lines.push(b.code + `. ` + b.title + ` (` + b.tierLabel + `) ` + status);
+        lines.push(`Resumen: ` + b.summary);
+        b.highlights.forEach(function (h) {
+          lines.push(`  - ` + h);
+        });
+        if (appState.notes[id]) {
+          lines.push(`  Nota del equipo: ` + appState.notes[id]);
+        }
+        lines.push(``);
+      });
+
+      const content = lines.join(`\n`);
+      if (window.notebookAppApi && typeof window.notebookAppApi.triggerFileDownload === 'function') {
+        window.notebookAppApi.triggerFileDownload({
+          content: content,
+          contentType: `text/plain`,
+          encoding: `UTF-8`,
+          filename: `Canvas_Social_EcoRuta_IoT.txt`
+        });
+      } else {
+        const blob = new Blob([content], { type: `text/plain;charset=utf-8` });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement(`a`);
+        a.href = url;
+        a.download = `Canvas_Social_EcoRuta_IoT.txt`;
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+    }
+
+    function resetCanvasState(btn) {
+      if (!btn) return;
+      if (btn.dataset.armed !== `true`) {
+        btn.dataset.armed = `true`;
+        btn.innerHTML = `<i data-lucide="alert-circle" aria-hidden="true"></i> Confirmar reinicio`;
+        if (window.lucide) window.lucide.createIcons();
+        return;
+      }
+
+      btn.dataset.armed = `false`;
+      btn.innerHTML = `<i data-lucide="rotate-ccw" aria-hidden="true"></i> Restablecer`;
+      if (window.lucide) window.lucide.createIcons();
+
+      appState = JSON.parse(JSON.stringify(DEFAULT_STATE));
+      const searchEl = document.getElementById(`canvas-search`);
+      if (searchEl) searchEl.value = ``;
+      const sliderEl = document.getElementById(`slider-nodes`);
+      const numEl = document.getElementById(`input-nodes`);
+      const modeEl = document.getElementById(`select-revenue-mode`);
+      if (sliderEl) sliderEl.value = appState.nodesCount;
+      if (numEl) numEl.value = appState.nodesCount;
+      if (modeEl) modeEl.value = appState.revenueMode;
+
+      filterBlocksByQuery(``);
+      filterTier(appState.activeTier);
+      selectOds(appState.selectedOds);
+      renderBlockStatuses();
+      renderInspector();
+      updateSimulatorCalculations();
+
+      const feedback = document.getElementById(`note-feedback`);
+      if (feedback) feedback.textContent = `Canvas restablecido a los valores iniciales.`;
+      persistState();
+    }
+
+    async function initApp() {
+      try {
+        if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === 'function') {
+          const saved = await window.notebookAppApi.getAppState();
+          if (saved && typeof saved === 'object') {
+            appState = Object.assign({}, DEFAULT_STATE, saved);
+            appState.notes = saved.notes || {};
+            appState.validated = saved.validated || {};
+          }
+        }
+      } catch (err) {
+        // Fallback to default state cleanly
+      }
+
+      const sliderEl = document.getElementById(`slider-nodes`);
+      const numEl = document.getElementById(`input-nodes`);
+      const modeEl = document.getElementById(`select-revenue-mode`);
+      if (sliderEl) sliderEl.value = appState.nodesCount;
+      if (numEl) numEl.value = appState.nodesCount;
+      if (modeEl) modeEl.value = appState.revenueMode;
+
+      filterTier(appState.activeTier || `all`);
+      selectOds(appState.selectedOds || `8`);
+      renderBlockStatuses();
+      renderInspector();
+      updateSimulatorCalculations();
+
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+      }
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === 'function') {
+        window.notebookAppApi.notifyAppReady();
+      }
+    }
+
+    document.addEventListener(`DOMContentLoaded`, initApp);
+  </script>
+</body>
+</html>
