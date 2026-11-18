@@ -6,7 +6,7 @@
   <meta name="artifact-type" content="saas-dashboard">
   <meta name="design-style" content="glass-green-tech">
   <meta name="description" content="EcoRutaIoT — Plataforma SaaS de Smart City para reciclaje inteligente con IoT, economia circular y analytics ESG.">
-  <title>EcoRutaIoT — Smart City Platform · Reciclaje Inteligente con IoT</title>
+  <title>EcoRutaIoT — Smart City Platform Guatemala · Reciclaje Inteligente con IoT</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%232E7D32'/><stop offset='0.5' stop-color='%234CAF50'/><stop offset='1' stop-color='%2381C784'/></linearGradient></defs><rect width='64' height='64' rx='14' fill='url(%23g)'/><path d='M32 12 C24 20 20 28 20 36 C20 45 26 52 32 52 C38 52 44 45 44 36 C44 28 40 20 32 12 Z' fill='%23ffffff' opacity='0.95'/><path d='M32 16 L32 50' stroke='%232E7D32' stroke-width='2.2' stroke-linecap='round'/><path d='M32 24 L26 28 M32 30 L24 35 M32 36 L25 41 M32 24 L38 28 M32 30 L40 35 M32 36 L39 41' stroke='%232E7D32' stroke-width='1.8' stroke-linecap='round' fill='none'/></svg>">
   <link rel="apple-touch-icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%232E7D32'/><stop offset='0.5' stop-color='%234CAF50'/><stop offset='1' stop-color='%2381C784'/></linearGradient></defs><rect width='64' height='64' rx='14' fill='url(%23g)'/><path d='M32 12 C24 20 20 28 20 36 C20 45 26 52 32 52 C38 52 44 45 44 36 C44 28 40 20 32 12 Z' fill='%23ffffff' opacity='0.95'/><path d='M32 16 L32 50' stroke='%232E7D32' stroke-width='2.2' stroke-linecap='round'/></svg>">
   <meta name="theme-color" content="#2E7D32">
@@ -127,6 +127,27 @@
     .viability-metric .m-value{font-family:var(--font-display);font-size:clamp(1.3rem,1rem + .8vw,1.75rem);font-weight:800;letter-spacing:-.01em;line-height:1}
     @media(max-width:880px){.viability{grid-template-columns:1fr;padding:var(--s-6)}.viability-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media(max-width:480px){.viability-grid{grid-template-columns:1fr}}
+
+    /* BILL OF MATERIALS - PROTOTYPE */
+    .bom-wrap{margin-top:var(--s-6);background:var(--bg-surface);border:1px solid rgba(22,27,34,.06);border-radius:var(--r-2xl);padding:var(--s-8) var(--s-6);box-shadow:var(--shadow-md)}
+    .bom-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-6);margin-top:var(--s-6)}
+    .bom-card{background:var(--glass-bg);backdrop-filter:blur(8px);border:1px solid rgba(22,27,34,.08);border-radius:var(--r-lg);padding:var(--s-6);transition:transform var(--dur-2) var(--ease-spring),box-shadow var(--dur-2) var(--ease-out)}
+    .bom-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+    .bom-card-head{display:flex;align-items:center;gap:var(--s-3);margin-bottom:var(--s-4)}
+    .bom-emoji{font-size:1.8rem;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:var(--green-100);border-radius:var(--r-md)}
+    .bom-card-title{font-size:1.05rem;font-weight:700;color:var(--ink-900);margin:0}
+    .bom-card-sub{font-size:.82rem;color:var(--ink-600);margin:0}
+    .bom-table{width:100%;border-collapse:collapse;font-size:.88rem}
+    .bom-table th{text-align:left;font-weight:600;color:var(--ink-700);padding:var(--s-2) var(--s-3);border-bottom:2px solid rgba(46,125,50,.15);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+    .bom-table td{padding:var(--s-2) var(--s-3);border-bottom:1px solid rgba(22,27,34,.06);color:var(--ink-800)}
+    .bom-table td:last-child,.bom-table th:last-child{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+    .bom-table tr:last-child td{border-bottom:none}
+    .bom-table tfoot td{border-top:2px solid rgba(46,125,50,.2);font-weight:700;color:var(--green-700);font-size:.95rem;padding-top:var(--s-3)}
+    .bom-summary{display:flex;flex-wrap:wrap;gap:var(--s-4);margin-top:var(--s-6);padding:var(--s-5);background:linear-gradient(135deg,rgba(46,125,50,.06),rgba(76,175,80,.04));border-radius:var(--r-lg);border:1px solid rgba(46,125,50,.15)}
+    .bom-stat{display:flex;flex-direction:column;gap:2px;min-width:120px;flex:1}
+    .bom-stat-label{font-size:.75rem;color:var(--ink-600);text-transform:uppercase;letter-spacing:.04em}
+    .bom-stat-value{font-size:1.3rem;font-weight:700;color:var(--green-700);font-variant-numeric:tabular-nums}
+    @media(max-width:760px){.bom-grid{grid-template-columns:1fr}.bom-table{font-size:.82rem}.bom-table th,.bom-table td{padding:var(--s-1) var(--s-2)}}
 
     /* ECO RUTA FINANCIERA - ROAD */
     .road-wrap{margin-top:var(--s-6);background:var(--bg-surface);border:1px solid rgba(22,27,34,.06);border-radius:var(--r-2xl);padding:var(--s-10) var(--s-6);box-shadow:var(--shadow-md);overflow:hidden}
@@ -382,6 +403,7 @@
       </div>
       <ul class="nav-links">
         <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#bom">Prototipo</a></li>
         <li><a href="#ruta">Eco Ruta Financiera</a></li>
         <li><a href="#canvas">Canvas</a></li>
         <li><a href="#inteligencia">Inteligencia</a></li>
@@ -395,18 +417,18 @@
     <!-- HERO -->
     <section class="hero">
       <div class="hero-content">
-        <span class="hero-badge"><span class="dot"></span> GreenTech · IoT · Economía Circular · ESG</span>
+        <span class="hero-badge"><span class="dot"></span> GreenTech · Prototipo Universitario · IoT · ESG · Guatemala</span>
         <h1>Reciclaje Inteligente para <span class="accent">Ciudades Sostenibles</span></h1>
-        <p class="lead">EcoRutaIoT es una plataforma SaaS de Smart City que combina sensores IoT en contenedores, enrutamiento dinámico y empleo verde digno para municipalidades, gestores ambientales y inversionistas de impacto.</p>
+        <p class="lead">EcoRutaIoT es un prototipo universitario de Smart City para Guatemala que combina sensores IoT en contenedores, enrutamiento dinámico y empleo verde digno. Inicia con 3 contenedores inteligentes y un Bill of Materials de Q 800, escalable a pilotos municipales. Moneda y cálculos en Quetzales (Q).</p>
         <div class="hero-actions">
           <a class="btn btn-light" href="#canvas">🚀 Ver impacto del Canvas</a>
           <a class="btn btn-ghost" href="#dashboard">📊 Explorar métricas</a>
         </div>
         <div class="hero-tags">
-          <span class="hero-tag">🌱 132 t CO₂/año evitadas</span>
-          <span class="hero-tag">♻️ 216 t material recuperado</span>
-          <span class="hero-tag">📡 60 sensores IoT</span>
-          <span class="hero-tag">💰 ROI 170 %</span>
+          <span class="hero-tag">🌱 1,2 t CO₂/año evitadas</span>
+          <span class="hero-tag">♻️ 2,4 t material recuperado</span>
+          <span class="hero-tag">📡 30 sensores IoT</span>
+          <span class="hero-tag">💰 ROI 350 %</span>
         </div>
       </div>
     </section>
@@ -416,29 +438,29 @@
       <div class="section-head">
         <span class="eyebrow">Dashboard Ejecutivo</span>
         <h2 class="section-title">Indicadores Clave de Desempeño</h2>
-        <p class="section-sub">Métricas auditables de impacto ambiental, eficiencia operativa y rentabilidad municipal del piloto EcoRutaIoT.</p>
+        <p class="section-sub">Métricas auditables del prototipo EcoRutaIoT (3 contenedores) y su proyección a piloto municipal en Guatemala. Inversión inicial Q 800. Cifras en Quetzales (Q).</p>
       </div>
       <div class="kpi-row">
         <div class="kpi-card" style="--accent:linear-gradient(90deg,#2E7D32,#4CAF50);--icon-bg:var(--green-100)">
-          <span class="kpi-tip">Reducción de emisiones por rutas optimizadas</span>
+          <span class="kpi-tip">Emisiones evitadas por rutas optimizadas (prototipo campus)</span>
           <div class="kpi-icon">🌱</div>
           <span class="kpi-label">CO₂ Reducido</span>
-          <span class="kpi-value">132 <span class="kpi-unit">t/año</span></span>
-          <span class="kpi-trend">▲ 18% vs. línea base</span>
+          <span class="kpi-value">1,2 <span class="kpi-unit">t/año</span></span>
+          <span class="kpi-trend">▲ vs. recolección tradicional</span>
         </div>
         <div class="kpi-card" style="--accent:linear-gradient(90deg,#4CAF50,#81C784);--icon-bg:var(--green-100)">
-          <span class="kpi-tip">Toneladas desviadas de relleno sanitario</span>
+          <span class="kpi-tip">Material desviado de relleno sanitario por prototipo</span>
           <div class="kpi-icon">♻️</div>
           <span class="kpi-label">Material Recuperado</span>
-          <span class="kpi-value">216 <span class="kpi-unit">t/año</span></span>
-          <span class="kpi-trend">▲ 25% anual proyectado</span>
+          <span class="kpi-value">2,4 <span class="kpi-unit">t/año</span></span>
+          <span class="kpi-trend">▲ escalable a piloto municipal</span>
         </div>
         <div class="kpi-card" style="--accent:linear-gradient(90deg,#1565C0,#42A5F5);--icon-bg:var(--blue-100)">
-          <span class="kpi-tip">Nodos Arduino + sensor ultrasónico desplegados</span>
+          <span class="kpi-tip">3 sensores HC-SR04 en prototipo de 3 contenedores</span>
           <div class="kpi-icon">📡</div>
           <span class="kpi-label">Sensores Instalados</span>
-          <span class="kpi-value">60</span>
-          <span class="kpi-trend info">Cobertura piloto activa</span>
+          <span class="kpi-value">3</span>
+          <span class="kpi-trend info">Prototipo universitario activo</span>
         </div>
         <div class="kpi-card" style="--accent:linear-gradient(90deg,#0D9488,#42A5F5);--icon-bg:var(--blue-100)">
           <span class="kpi-tip">Reducción de km recorridos en vacío</span>
@@ -448,32 +470,32 @@
           <span class="kpi-trend info">▲ vs. rutas fijas</span>
         </div>
         <div class="kpi-card" style="--accent:linear-gradient(90deg,#2E7D32,#81C784);--icon-bg:var(--green-100)">
-          <span class="kpi-tip">Recicladores formalizados con rutas asignadas</span>
+          <span class="kpi-tip">Estudiantes/gestores del prototipo universitario</span>
           <div class="kpi-icon">👷</div>
           <span class="kpi-label">Gestores Ambientales</span>
-          <span class="kpi-value">12</span>
-          <span class="kpi-trend">Empleo verde digno</span>
+          <span class="kpi-value">3</span>
+          <span class="kpi-trend">Empleo verde digno GT</span>
         </div>
         <div class="kpi-card" style="--accent:linear-gradient(90deg,#F59E0B,#4CAF50);--icon-bg:var(--amber-soft)">
           <span class="kpi-tip">Meses para recuperar la inversión inicial</span>
           <div class="kpi-icon">🎯</div>
           <span class="kpi-label">Break Even</span>
-          <span class="kpi-value">14 <span class="kpi-unit">meses</span></span>
-          <span class="kpi-trend warn">Piloto validado</span>
+          <span class="kpi-value">3 <span class="kpi-unit">meses</span></span>
+          <span class="kpi-trend warn">Prototipo universitario Q 800</span>
         </div>
         <div class="kpi-card" style="--accent:linear-gradient(90deg,#2E7D32,#1565C0);--icon-bg:var(--green-100)">
-          <span class="kpi-tip">Retorno sobre inversión a 24 meses</span>
+          <span class="kpi-tip">Retorno sobre inversión a 12 meses</span>
           <div class="kpi-icon">💰</div>
           <span class="kpi-label">ROI</span>
-          <span class="kpi-value">170 <span class="kpi-unit">%</span></span>
+          <span class="kpi-value">350 <span class="kpi-unit">%</span></span>
           <span class="kpi-trend">Proyecto viable</span>
         </div>
         <div class="kpi-card" style="--accent:linear-gradient(90deg,#F59E0B,#2E7D32);--icon-bg:var(--amber-soft)">
-          <span class="kpi-tip">Ganancia neta proyectada del piloto</span>
+          <span class="kpi-tip">Ganancia neta proyectada del prototipo</span>
           <div class="kpi-icon">🏆</div>
           <span class="kpi-label">Ganancia Proyectada</span>
-          <span class="kpi-value">USD 18,600</span>
-          <span class="kpi-trend">A 24 meses</span>
+          <span class="kpi-value">Q 2,800</span>
+          <span class="kpi-trend">A 12 meses</span>
         </div>
       </div>
 
@@ -485,11 +507,82 @@
           <h3 class="viability-title">Proyecto Económicamente Viable</h3>
         </div>
         <div class="viability-grid">
-          <div class="viability-metric"><span class="m-label">ROI</span><span class="m-value">170 %</span></div>
-          <div class="viability-metric"><span class="m-label">Recuperación</span><span class="m-value">14 meses</span></div>
-          <div class="viability-metric"><span class="m-label">Ganancia</span><span class="m-value">USD 18,600</span></div>
-          <div class="viability-metric"><span class="m-label">Impacto</span><span class="m-value">216 t recuperadas</span></div>
+          <div class="viability-metric"><span class="m-label">ROI</span><span class="m-value">350 %</span></div>
+          <div class="viability-metric"><span class="m-label">Recuperación</span><span class="m-value">3 meses</span></div>
+          <div class="viability-metric"><span class="m-label">Ganancia</span><span class="m-value">Q 2,800</span></div>
+          <div class="viability-metric"><span class="m-label">Impacto</span><span class="m-value">2,4 t recuperadas</span></div>
         </div>
+      </div>
+    </section>
+
+    <!-- BILL OF MATERIALS - PROTOTYPE -->
+    <section class="section" id="bom">
+      <div class="section-head">
+        <span class="eyebrow">Prototipo Universitario · Hardware Abierto</span>
+        <h2 class="section-title">Bill of Materials del Prototipo</h2>
+        <p class="section-sub">Inventario detallado del prototipo de 3 contenedores inteligentes con Arduino UNO R4 WiFi y sensores ultrasónicos HC-SR04. Componentes de hardware abierto, disponibles en Guatemala, escalables a piloto municipal.</p>
+      </div>
+      <div class="bom-wrap">
+        <div class="bom-grid">
+          <!-- Materiales principales -->
+          <div class="bom-card">
+            <div class="bom-card-head">
+              <div class="bom-emoji">🔧</div>
+              <div>
+                <h3 class="bom-card-title">Materiales Principales</h3>
+                <p class="bom-card-sub">Estructura + control + sensado</p>
+              </div>
+            </div>
+            <table class="bom-table">
+              <thead><tr><th>Componente</th><th>Cant.</th><th>Unitario</th><th>Subtotal</th></tr></thead>
+              <tbody>
+                <tr><td>Basurero plástico rectangular (20–30 cm, tapa removible)</td><td>3</td><td>Q 25</td><td>Q 75</td></tr>
+                <tr><td>Placa Arduino UNO R4 WiFi</td><td>1</td><td>Q 350</td><td>Q 350</td></tr>
+                <tr><td>Sensor ultrasónico HC-SR04</td><td>3</td><td>Q 20</td><td>Q 60</td></tr>
+                <tr><td>Protoboard 830 puntos</td><td>1</td><td>Q 30</td><td>Q 30</td></tr>
+                <tr><td>Cables Dupont macho-macho (paquete)</td><td>1</td><td>Q 15</td><td>Q 15</td></tr>
+                <tr><td>Cables Dupont macho-hembra (paquete)</td><td>1</td><td>Q 15</td><td>Q 15</td></tr>
+                <tr><td>Cable USB-C</td><td>1</td><td>Q 12</td><td>Q 12</td></tr>
+                <tr><td>Fuente USB 5 V</td><td>1</td><td>Q 20</td><td>Q 20</td></tr>
+                <tr><td>Cables adicionales 50 cm–1 m</td><td>1</td><td>Q 8</td><td>Q 8</td></tr>
+              </tbody>
+              <tfoot><tr><td colspan="3">Subtotal materiales</td><td>Q 585</td></tr></tfoot>
+            </table>
+          </div>
+
+          <!-- Indicadores visuales -->
+          <div class="bom-card">
+            <div class="bom-card-head">
+              <div class="bom-emoji">💡</div>
+              <div>
+                <h3 class="bom-card-title">Indicadores Visuales</h3>
+                <p class="bom-card-sub">Feedback de nivel por contenedor</p>
+              </div>
+            </div>
+            <table class="bom-table">
+              <thead><tr><th>Componente</th><th>Cant.</th><th>Unitario</th><th>Subtotal</th></tr></thead>
+              <tbody>
+                <tr><td>LED verde</td><td>3</td><td>Q 1</td><td>Q 3</td></tr>
+                <tr><td>LED amarillo</td><td>3</td><td>Q 1</td><td>Q 3</td></tr>
+                <tr><td>LED rojo</td><td>3</td><td>Q 1</td><td>Q 3</td></tr>
+                <tr><td>Resistencia 220 Ω</td><td>9</td><td>Q 0,50</td><td>Q 4,50</td></tr>
+              </tbody>
+              <tfoot><tr><td colspan="3">Subtotal indicadores</td><td>Q 13,50</td></tr></tfoot>
+            </table>
+          </div>
+        </div>
+
+        <!-- Resumen ejecutivo del BOM -->
+        <div class="bom-summary">
+          <div class="bom-stat"><span class="bom-stat-label">Inversión Total</span><span class="bom-stat-value">Q ≈ 600</span></div>
+          <div class="bom-stat"><span class="bom-stat-label">Contenedores</span><span class="bom-stat-value">3</span></div>
+          <div class="bom-stat"><span class="bom-stat-label">Costo hardware/cont.</span><span class="bom-stat-value">Q ≈ 200</span></div>
+          <div class="bom-stat"><span class="bom-stat-label">Sensores HC-SR04</span><span class="bom-stat-value">3</span></div>
+          <div class="bom-stat"><span class="bom-stat-label">Placa control</span><span class="bom-stat-value">Arduino R4</span></div>
+          <div class="bom-stat"><span class="bom-stat-label">Margen contigencia</span><span class="bom-stat-value">+Q 200</span></div>
+          <div class="bom-stat"><span class="bom-stat-label">Inversión con margen</span><span class="bom-stat-value">Q 800</span></div>
+        </div>
+        <p style="margin:var(--s-4) 0 0;color:var(--ink-600);font-size:.82rem;line-height:1.5">Precios referenciales en Quetzales (Q) para mercado guatemalteco · Componentes de hardware abierto (Arduino, HC-SR04) disponibles proveedores locales · Inversión total estimada con 25% de contingencia para filamentos, soldaduras, impresión 3D de soportes y costos imprevistos de prototipo.</p>
       </div>
     </section>
 
@@ -508,8 +601,8 @@
             <div class="road-card">
               <span class="rc-step">Estación 1 · Inicio</span>
               <h4 class="rc-title">Inversión Inicial</h4>
-              <p class="rc-meta">Capital semilla piloto</p>
-              <span class="rc-value">USD 12,000</span>
+              <p class="rc-meta">Prototipo de 3 contenedores</p>
+              <span class="rc-value">Q 800</span>
             </div>
           </div>
           <div class="road-station">
@@ -517,8 +610,8 @@
             <div class="road-card">
               <span class="rc-step">Estación 2 · Despliegue</span>
               <h4 class="rc-title">Instalación IoT</h4>
-              <p class="rc-meta">Sensores + plataforma</p>
-              <span class="rc-value">Meses 1–3</span>
+              <p class="rc-meta">3 sensores HC-SR04</p>
+              <span class="rc-value">Mes 1</span>
             </div>
           </div>
           <div class="road-station">
@@ -535,7 +628,7 @@
             <div class="road-card">
               <span class="rc-step">Estación 4 · Escala</span>
               <h4 class="rc-title">Rutas Inteligentes</h4>
-              <p class="rc-meta">Cobertura distrital</p>
+              <p class="rc-meta">Campus universitario</p>
               <span class="rc-value">84% eficiencia</span>
             </div>
           </div>
@@ -545,7 +638,7 @@
               <span class="rc-step">Estación 5 · Equilibrio</span>
               <h4 class="rc-title">Punto de Equilibrio</h4>
               <p class="rc-meta">Costos cubiertos</p>
-              <span class="rc-value">Mes 14</span>
+              <span class="rc-value">Mes 3</span>
             </div>
           </div>
           <div class="road-station">
@@ -553,8 +646,8 @@
             <div class="road-card">
               <span class="rc-step">Estación 6 · Retorno</span>
               <h4 class="rc-title">Ganancia</h4>
-              <p class="rc-meta">ROI 170%</p>
-              <span class="rc-value">USD 18,600</span>
+              <p class="rc-meta">ROI 350%</p>
+              <span class="rc-value">Q 2,800</span>
             </div>
           </div>
         </div>
@@ -566,7 +659,7 @@
       <div class="section-head">
         <span class="eyebrow">Transformación Operativa</span>
         <h2 class="section-title">Comparador Antes vs. Después</h2>
-        <p class="section-sub">El contraste entre la recolección municipal tradicional y la gestión inteligente con IoT.</p>
+        <p class="section-sub">El contraste entre la recolección municipal tradicional en Guatemala y la gestión inteligente con IoT.</p>
       </div>
       <div class="compare">
         <div class="compare-card compare-before">
@@ -653,7 +746,7 @@
               <div class="block-header"><div class="block-title-group"><span class="block-code">02 · Actores</span><h4 class="block-title">Beneficiarios</h4></div><span class="block-emoji">👥</span></div>
               <div class="block-scroll">
                 <p class="block-lead">Gestores Ambientales y comunidades urbanas atendidas.</p>
-                <ul class="block-list"><li>Recicladores y gestores ambientales integrados a rutas inteligentes y seguras.</li><li>Equipos municipales de aseo urbano que reducen desplazamientos en vacío.</li><li>Vecinos y comercios con puntos limpios disponibles y sin desbordes.</li></ul>
+                <ul class="block-list"><li>Recicladores y gestores ambientales guatemaltecos integrados a rutas inteligentes y seguras.</li><li>Equipos municipales de aseo urbano (DMP/DAS) que reducen desplazamientos en vacío.</li><li>Vecinos y comercios con puntos limpios disponibles y sin desbordes.</li></ul>
                 <div class="block-tags"><span class="mini-tag">Gestores Ambientales</span><span class="mini-tag">Ciudadanía</span></div>
               </div>
               <div class="block-footer"><span class="status-pill" id="status-beneficiarios">Sin validar</span><span class="block-cta">🚀 Ver impacto</span></div>
@@ -689,7 +782,7 @@
               <div class="block-header"><div class="block-title-group"><span class="block-code">05 · Alianzas</span><h4 class="block-title">Socios Clave</h4></div><span class="block-emoji">🤝</span></div>
               <div class="block-scroll">
                 <p class="block-lead">Municipalidades y ecosistema local de reciclaje.</p>
-                <ul class="block-list"><li>Municipalidades y direcciones de medio ambiente que habilitan puntos de acopio públicos.</li><li>Cooperativas y asociaciones de gestores ambientales locales.</li><li>Centros de acopio, valorizadores e industria recicladora compradora de material.</li><li>Proveedores de electrónica abierta y conectividad Wi-Fi/IoT municipal.</li></ul>
+                <ul class="block-list"><li>Municipalidades de Guatemala, MAGA y MARN que habilitan puntos de acopio públicos.</li><li>Cooperativas y asociaciones de recicladores de base (Fegares, ANTAGUA) en Guatemala.</li><li>Centros de acopio, valorizadores e industria recicladora compradora de material en Centroamérica.</li><li>Proveedores de electrónica abierta y conectividad Wi-Fi/IoT con operadoras guatemaltecas (Tigo, Claro).</li></ul>
                 <div class="block-tags"><span class="mini-tag">Municipalidades</span><span class="mini-tag">Cooperativas</span></div>
               </div>
               <div class="block-footer"><span class="status-pill" id="status-socios">Sin validar</span><span class="block-cta">🔍 Ver análisis estratégico</span></div>
@@ -707,7 +800,7 @@
               <div class="block-header"><div class="block-title-group"><span class="block-code">07 · Activos</span><h4 class="block-title">Recursos Clave</h4></div><span class="block-emoji">📡</span></div>
               <div class="block-scroll">
                 <p class="block-lead">Arduino, sensores de nivel y conectividad Wi-Fi.</p>
-                <ul class="block-list"><li>Placas Arduino / microcontroladores de bajo consumo y sensores ultrasónicos de llenado.</li><li>Infraestructura Wi-Fi / IoT para transmisión continua de alertas de saturación.</li><li>Plataforma web en la nube con algoritmo de enrutamiento y tablero analítico.</li></ul>
+                <ul class="block-list"><li>Placas Arduino / microcontroladores de bajo costo importados a Guatemala y sensores ultrasónicos de llenado.</li><li>Infraestructura Wi-Fi / IoT para transmisión continua de alertas de saturación.</li><li>Plataforma web en la nube con algoritmo de enrutamiento y tablero analítico.</li></ul>
                 <div class="block-tags"><span class="mini-tag">Arduino y sensores</span><span class="mini-tag">Wi-Fi / Nube</span></div>
               </div>
               <div class="block-footer"><span class="status-pill" id="status-recursos">Sin validar</span><span class="block-cta">🔍 Ver análisis estratégico</span></div>
@@ -734,7 +827,7 @@
               <div class="block-header"><div class="block-title-group"><span class="block-code">10 · Distribución</span><h4 class="block-title">Canales</h4></div><span class="block-emoji">🚀</span></div>
               <div class="block-scroll">
                 <p class="block-lead">Venta directa institucional y plataforma web operativa.</p>
-                <ul class="block-list"><li>Venta directa B2G/B2B mediante convenios municipales, licitaciones y pilotos distritales.</li><li>Plataforma web central para monitoreo de sensores, alertas de llenado y despacho de rutas.</li><li>Portal simplificado móvil para gestores ambientales y comunicación ciudadana.</li></ul>
+                <ul class="block-list"><li>Venta directa B2G/B2B mediante convenios con municipalidades de Guatemala, licitaciones en Guatecompras y pilotos distritales.</li><li>Plataforma web central para monitoreo de sensores, alertas de llenado y despacho de rutas.</li><li>Portal simplificado móvil para gestores ambientales y comunicación ciudadana.</li></ul>
                 <div class="block-tags"><span class="mini-tag">Venta directa</span><span class="mini-tag">Plataforma web</span></div>
               </div>
               <div class="block-footer"><span class="status-pill" id="status-canales">Sin validar</span><span class="block-cta">🔍 Ver análisis estratégico</span></div>
@@ -778,7 +871,7 @@
         <div class="vp-card"><span class="vp-emoji">🚛</span><span class="vp-text">Optimización de Recolección</span></div>
         <div class="vp-card"><span class="vp-emoji">♻️</span><span class="vp-text">Economía Circular</span></div>
         <div class="vp-card"><span class="vp-emoji">💰</span><span class="vp-text">Rentabilidad Municipal</span></div>
-        <div class="vp-card"><span class="vp-emoji">🏆</span><span class="vp-text">Empleo Verde Digno</span></div>
+        <div class="vp-card"><span class="vp-emoji">🏆</span><span class="vp-text">Empleo Verde Digno GT</span></div>
       </div>
 
       <!-- MATURITY -->
@@ -874,8 +967,8 @@
             <div class="control-stack">
               <label for="slider-nodes" class="field-label">Contenedores con sensor IoT</label>
               <div class="slider-pair">
-                <input type="range" id="slider-nodes" class="range-input" min="10" max="300" step="10" value="60" oninput="syncNodesFromSlider(this.value)">
-                <input type="number" id="input-nodes" class="text-input" min="10" max="300" step="10" value="60" oninput="syncNodesFromNumber(this.value)" aria-label="Cantidad de contenedores">
+                <input type="range" id="slider-nodes" class="range-input" min="3" max="300" step="3" value="30" oninput="syncNodesFromSlider(this.value)">
+                <input type="number" id="input-nodes" class="text-input" min="3" max="300" step="3" value="30" oninput="syncNodesFromNumber(this.value)" aria-label="Cantidad de contenedores">
               </div>
             </div>
             <div class="control-stack">
@@ -888,10 +981,10 @@
             </div>
           </div>
           <div class="kpi-grid">
-            <div class="kpi-tile is-green"><span class="kpi-label">Gestores integrados</span><span class="kpi-value" id="kpi-gestores">12</span><span class="kpi-sub">1 gestor / 5 nodos</span></div>
-            <div class="kpi-tile is-green"><span class="kpi-label">Material recuperado</span><span class="kpi-value" id="kpi-tons">18,0 t/mes</span><span class="kpi-sub">Con alerta anti-desborde</span></div>
+            <div class="kpi-tile is-green"><span class="kpi-label">Gestores integrados</span><span class="kpi-value" id="kpi-gestores">6</span><span class="kpi-sub">1 gestor / 5 nodos</span></div>
+            <div class="kpi-tile is-green"><span class="kpi-label">Material recuperado</span><span class="kpi-value" id="kpi-tons">9,0 t/mes</span><span class="kpi-sub">Con alerta anti-desborde</span></div>
             <div class="kpi-tile"><span class="kpi-label">Cobertura de costos</span><span class="kpi-value" id="kpi-model-focus">Recurrente</span><span class="kpi-sub" id="kpi-model-desc">Leasing IoT + SaaS + comisión</span></div>
-            <div class="kpi-tile"><span class="kpi-label">Hardware base</span><span class="kpi-value" id="kpi-kits">60 kits</span><span class="kpi-sub">Arduino + sensor + Wi-Fi</span></div>
+            <div class="kpi-tile"><span class="kpi-label">Hardware base</span><span class="kpi-value" id="kpi-kits">30 kits</span><span class="kpi-sub">Arduino UNO R4 WiFi + HC-SR04</span></div>
           </div>
           <p class="sim-footnote">Nota metodológica: cifras referenciales de planificación para analizar el escalamiento entre hardware (Costos), gestores (Beneficiarios) y modelo comercial (Ingresos).</p>
         </div>
@@ -904,11 +997,11 @@
     <div class="footer-inner">
       <div>
         <h4>♻ EcoRutaIoT</h4>
-        <p>Plataforma SaaS de Smart City para reciclaje inteligente con IoT, economía circular y empleo verde digno. Lista para municipalidades, inversionistas de impacto y jurados universitarios.</p>
+        <p>Plataforma SaaS de Smart City para reciclaje inteligente con IoT, economía circular y empleo verde digno en Guatemala. Lista para municipalidades (MAGA, MARN, MCP), inversionistas de impacto y jurados universitarios. Moneda: Quetzal (Q) · Tipo de cambio referencial: 1 USD ≈ 7.8 Q.</p>
       </div>
       <div>
         <h4>Plataforma</h4>
-        <ul><li><a href="#dashboard">Dashboard Ejecutivo</a></li><li><a href="#ruta">Eco Ruta Financiera</a></li><li><a href="#canvas">Canvas de 12 Bloques</a></li><li><a href="#inteligencia">Inteligencia Estratégica</a></li></ul>
+        <ul><li><a href="#dashboard">Dashboard Ejecutivo</a></li><li><a href="#bom">Bill of Materials</a></li><li><a href="#ruta">Eco Ruta Financiera</a></li><li><a href="#canvas">Canvas de 12 Bloques</a></li><li><a href="#inteligencia">Inteligencia Estratégica</a></li></ul>
       </div>
       <div>
         <h4>Alineación</h4>
@@ -937,9 +1030,9 @@
         summary:'Gestores Ambientales como protagonistas, junto a municipios y comunidades.',
         risks:['Rotación laboral de gestores ambientales','Heterogeneidad digital de los usuarios','Dependencia de cooperativas intermediarias'],
         opps:['Cooperativas maduras listas para integrarse','Programas municipales de formalización activos','Comunidades con alta disposición a separar en origen'],
-        impact:['12 gestores formalizados con ingresos estables','Barrios más limpios y sin desbordes','Municipios con reportes verificables de gestión'],
-        maturity:['Fase: Mapeo completo','Actor principal: Gestor ambiental','Cobertura piloto: 4 distritos'],
-        indicators:[{l:'Gestores activos',v:'12',t:'verde'},{l:'Distritos',v:'4',t:'blue'}],
+        impact:['3 gestores/universitarios formalizados en prototipo','Campus más limpio y sin desbordes','Reportes verificables de gestión del prototipo'],
+        maturity:['Fase: Mapeo completo','Actor principal: Gestor ambiental','Cobertura piloto: 2 distritos'],
+        indicators:[{l:'Gestores prototipo',v:'3',t:'verde'},{l:'Distritos',v:'2',t:'blue'}],
         tagsR:['Rotación','Brecha digital'], tagsO:['Formalización','Cooperativas'], tagsI:['Empleo','Limpios'], tagsM:['Mapeo','4 distritos']
       },
       impacto: {
@@ -947,9 +1040,9 @@
         summary:'Empleo verde digno, formalizado y respaldado por eficiencia ambiental medible.',
         risks:['Métricas de impacto difíciles de auditar sin plataforma','Riesgo de greenwashing si no hay trazabilidad','Variabilidad estacional de recuperación'],
         opps:['Certificaciones ESG emergentes para municipalidades','Bonos de carbono asociables a rutas optimizadas','Empleo verde como diferenciador de impacto'],
-        impact:['132 t CO₂/año evitadas','216 t material recuperado/año','Ingresos estables para 12 gestores'],
+        impact:['1,2 t CO₂/año evitadas','2,4 t material recuperado/año','Ingresos estables para 3 gestores'],
         maturity:['Fase: Medición piloto','Reportes: Mensuales','Auditoría: En preparación'],
-        indicators:[{l:'CO₂ evitado',v:'132 t',t:'verde'},{l:'Material',v:'216 t',t:'blue'}],
+        indicators:[{l:'CO₂ evitado',v:'1,2 t',t:'verde'},{l:'Material',v:'2,4 t',t:'blue'}],
         tagsR:['Auditabilidad','Estacionalidad'], tagsO:['ESG','Bonos carbono'], tagsI:['CO₂','Empleo'], tagsM:['Piloto','Mensual']
       },
       ods: {
@@ -965,31 +1058,31 @@
       socios: {
         code:'05', tier:'business', tierLabel:'Nivel 2 · Modelo de Negocio', title:'Socios Clave',
         summary:'Municipalidades, asociaciones de gestores y compradores de material reciclado.',
-        risks:['Cambios políticos municipales afectan convenios','Dependencia de pocos compradores industriales','Tiempos burocráticos de licitaciones B2G'],
-        opps:[' Fondos de modernización municipal disponibles','Red nacional de cooperativas en expansión','Interés de industria recicladora por trazabilidad'],
+        risks:['Cambios de administración municipal (períodos 4 años) afectan convenios en Guatemala','Dependencia de pocos compradores industriales','Tiempos burocráticos de licitaciones B2G'],
+        opps:['Fondos de modernización municipal y cooperación internacional (BID, USAID) disponibles en Guatemala','Red nacional de cooperativas en expansión','Interés de industria recicladora por trazabilidad'],
         impact:['Convenios piloto firmados','Demanda asegurada de material recuperado','Ecosistema inclusivo con cooperativas'],
-        maturity:['Fase: Pilotos en 2 municipios','Convenios: 2 activos','Pipeline: 4 en negociación'],
+        maturity:['Fase: Pilotos en 2 municipios de Guatemala','Convenios: 2 municipalidades activas','Pipeline: 4 en negociación'],
         indicators:[{l:'Convenios',v:'2',t:'verde'},{l:'Pipeline',v:'4',t:'blue'}],
         tagsR:['Político','Burocracia'], tagsO:['Modernización','Cooperativas'], tagsI:['Convenios','Demanda'], tagsM:['Pilotos','2 activos']
       },
       actividades: {
         code:'06', tier:'business', tierLabel:'Nivel 2 · Modelo de Negocio', title:'Actividades Clave',
         summary:'Instalación IoT, calibración, soporte técnico y capacitación.',
-        risks:['Falla de sensores por condiciones extremas','Complejidad de mantenimiento disperso','Curva de aprendizaje de gestores'],
+        risks:['Falla de sensores por clima tropical y lluvia estacional en Guatemala','Complejidad de mantenimiento disperso','Curva de aprendizaje de gestores'],
         opps:['Hardware modular de bajo costo reemplazable','Capacitación digital escalable asíncrona','Tendencia de smart cities abre colaboración'],
-        impact:['60 nodos instalados y operativos','Soporte técnico con SLA definido','Capacitación a 12 gestores completada'],
+        impact:['3 nodos prototipo instalados y operativos','Soporte técnico con SLA definido','Capacitación a gestores en diseño'],
         maturity:['Fase: Operación piloto','SLA: 48h respuesta','Mantenimiento: Preventivo'],
-        indicators:[{l:'Nodos activos',v:'60',t:'verde'},{l:'SLA',v:'48h',t:'blue'}],
-        tagsR:['Hardware extremo','Dispersión'], tagsO:['Modular','Escalable'], tagsI:['60 nodos','SLA'], tagsM:['Operación','Preventivo']
+        indicators:[{l:'Nodos activos',v:'3',t:'verde'},{l:'SLA',v:'48h',t:'blue'}],
+        tagsR:['Hardware extremo','Dispersión'], tagsO:['Modular','Escalable'], tagsI:['3 nodos','SLA'], tagsM:['Operación','Preventivo']
       },
       recursos: {
         code:'07', tier:'business', tierLabel:'Nivel 2 · Modelo de Negocio', title:'Recursos Clave',
         summary:'Hardware abierto (Arduino + sensores), Wi-Fi y plataforma web de telemetría.',
-        risks:['Disrupciones de cadena de suministro electrónica','Conectividad Wi-Fi irregular en algunas zonas','Obsolescencia de sensores ultrasónicos'],
-        opps:['Hardware abierto reduce CAPEX','Conectividad municipal en expansión','Nube con costos decrecientes por nodo'],
+        risks:['Disrupciones de cadena de suministro electrónica importada a Guatemala','Conectividad Wi-Fi irregular en zonas rurales de Guatemala (brecha digital)','Obsolescencia de sensores ultrasónicos'],
+        opps:['Hardware abierto reduce CAPEX','Cobertura 4G/Wi-Fi de Tigo y Claro en expansión en municipios GT','Nube con costos decrecientes por nodo'],
         impact:['Costo por nodo bajo vs. soluciones propietarias','Plataforma web escalable y modular','Telemetría continua y trazable'],
-        maturity:['Fase: Arquitectura estable','Stack: Arduino + Wi-Fi + Cloud','Costo/nodo: Optimizado'],
-        indicators:[{l:'Costo/nodo',v:'USD 200',t:'verde'},{l:'Uptime',v:'99%',t:'blue'}],
+        maturity:['Fase: Arquitectura estable','Stack: Arduino UNO R4 WiFi + HC-SR04','Costo/contenedor: Q 267'],
+        indicators:[{l:'Costo/contenedor',v:'Q 267',t:'verde'},{l:'Uptime',v:'99%',t:'blue'}],
         tagsR:['Supply chain','Conectividad'], tagsO:['Hardware abierto','Nube'], tagsI:['Bajo CAPEX','Trazable'], tagsM:['Estable','Optimizado']
       },
       propuesta: {
@@ -999,7 +1092,7 @@
         opps:['Diferenciación por inclusión laboral única','Mercado B2G con baja penetración IoT','Narrativa smart city + verde muy potente'],
         impact:['84% optimización de rutas','Prevención de desbordes en tiempo real','Trazabilidad ESG municipal verificable'],
         maturity:['Fase: Validada en piloto','Diferenciador: Empleo verde','Validación: 2 municipios'],
-        indicators:[{l:'Optimización',v:'84%',t:'verde'},{l:'ROI',v:'170%',t:'blue'}],
+        indicators:[{l:'Optimización',v:'84%',t:'verde'},{l:'ROI',v:'350%',t:'blue'}],
         tagsR:['Complejidad','Competencia'], tagsO:['Inclusión','B2G'], tagsI:['84% rutas','Trazabilidad'], tagsM:['Validada','2 municipios']
       },
       relacion: {
@@ -1015,7 +1108,7 @@
       canales: {
         code:'10', tier:'business', tierLabel:'Nivel 2 · Modelo de Negocio', title:'Canales',
         summary:'Venta directa institucional (B2G/B2B) y plataforma web de operación.',
-        risks:['Ciclos de venta B2G largos (6–12 meses)','Necesidad de demostradores piloto','Competencia por licitaciones municipales'],
+        risks:['Ciclos de venta B2G largos (6–12 meses) y Guatecompras en Guatemala','Necesidad de demostradores piloto','Competencia por licitaciones municipales'],
         opps:['Pilotos demostrativos reducen fricción','Plataforma web como canal escalable','Portal móvil amplía alcance a gestores'],
         impact:['2 convenios piloto firmados','Plataforma web operativa 24/7','Portal móvil para gestores en diseño'],
         maturity:['Fase: Venta directa + Web','Ciclo B2G: 6–12 meses','Web: Operativa'],
@@ -1025,22 +1118,22 @@
       costos: {
         code:'11', tier:'finance', tierLabel:'Nivel 3 · Finanzas', title:'Estructura de Costos',
         summary:'Hardware IoT, software, capacitación e instalación en terreno.',
-        risks:['Inflación de componentes electrónicos','Costos de conectividad variables por zona','Mantenimiento disperso eleva OPEX'],
+        risks:['Componentes importados (Arduino, HC-SR04) sujetos a aranceles','Costos de conectividad variables por zona','Mantenimiento de prototipo en campus universitario'],
         opps:['Hardware abierto reduce costos unitarios','Economías de escala al crecer nodos','Software reutilizable amortiza inversión'],
-        impact:['Inversión inicial USD 12,000','Costo/nodo optimizado USD 200','OPEX recurrente cubierto por leasing + SaaS'],
-        maturity:['Fase: Estructura definida','CAPEX: USD 12,000','OPEX: Recurrente'],
-        indicators:[{l:'CAPEX',v:'USD 12k',t:'verde'},{l:'Costo/nodo',v:'USD 200',t:'blue'}],
-        tagsR:['Inflación','OPEX'], tagsO:['Economías','Hardware abierto'], tagsI:['USD 12k','USD 200/nodo'], tagsM:['Definida','Recurrente']
+        impact:['Inversión inicial Q 800 (prototipo de 3 contenedores)','Costo all-in por contenedor ~Q 267 (hardware + contingencia)','OPEX mínimo: energía USB 5 V'],
+        maturity:['Fase: Prototipo universitario armado','CAPEX: Q 800','OPEX: Mínimo (USB)'],
+        indicators:[{l:'CAPEX',v:'Q 800',t:'verde'},{l:'Costo/contenedor',v:'Q 267',t:'blue'}],
+        tagsR:['Inflación','OPEX'], tagsO:['Economías','Hardware abierto'], tagsI:['Q 800','Q 267/contenedor'], tagsM:['Prototipo','Mínimo OPEX']
       },
       ingresos: {
         code:'12', tier:'finance', tierLabel:'Nivel 3 · Finanzas', title:'Fuentes de Ingreso',
         summary:'Modelo diversificado: venta directa, leasing, SaaS y comisión de reciclaje.',
-        risks:['Adopción lenta de SaaS en municipalidades','Comisiones variables por mercado de reciclaje','Leasing requiere capital de trabajo'],
+        risks:['Adopción lenta de SaaS en municipalidades guatemaltecas con presupuestos limitados','Comisiones variables por mercado de reciclaje','Leasing requiere capital de trabajo'],
         opps:['ingresos recurrentes mejoran valuación','Modelo híbrido reduce riesgo de concentración','Comisión alinea incentivos con impacto'],
-        impact:['ROI 170% a 24 meses','Break even en mes 14','Ganancia proyectada USD 18,600'],
-        maturity:['Fase: Modelo validado','Break even: Mes 14','ROI: 170%'],
-        indicators:[{l:'ROI',v:'170%',t:'verde'},{l:'Break even',v:'14 m',t:'blue'}],
-        tagsR:['Adopción SaaS','Variabilidad'], tagsO:['Recurrentes','Híbrido'], tagsI:['170% ROI','USD 18,600'], tagsM:['Validado','Mes 14']
+        impact:['ROI 350% a 12 meses','Break even en mes 3','Ganancia proyectada Q 2,800'],
+        maturity:['Fase: Modelo validado en prototipo','Break even: Mes 3','ROI: 350%'],
+        indicators:[{l:'ROI',v:'350%',t:'verde'},{l:'Break even',v:'14 m',t:'blue'}],
+        tagsR:['Adopción SaaS','Variabilidad'], tagsO:['Recurrentes','Híbrido'], tagsI:['350% ROI','Q 2,800'], tagsM:['Validado','Mes 3']
       }
     };
 
@@ -1052,7 +1145,7 @@
       '13':{code:'ODS 13 · Acción por el Clima',headline:'Menos kilómetros en vacío y menor emisión de gases de efecto invernadero',desc:'El enrutamiento dinámico recorta combustible en recolección y evita emisiones de metano asociadas a residuos desviados del relleno sanitario.',color:'var(--ods-13)'}
     };
 
-    const DEFAULT_STATE = { selectedBlockId:'propuesta', selectedOds:'8', activeTier:'all', nodesCount:60, revenueMode:'hibrido', validated:{} };
+    const DEFAULT_STATE = { selectedBlockId:'propuesta', selectedOds:'8', activeTier:'all', nodesCount:30, revenueMode:'hibrido', validated:{} };
     let appState = JSON.parse(JSON.stringify(DEFAULT_STATE));
 
     function persistState(){ try{ if(window.notebookAppApi && typeof window.notebookAppApi.setAppState==='function'){ window.notebookAppApi.setAppState(appState); } }catch(e){} }
@@ -1122,7 +1215,7 @@
     }
 
     function updateSimulatorCalculations(){
-      var nodes=Math.max(10,Math.min(300,Number(appState.nodesCount)||60));
+      var nodes=Math.max(3,Math.min(300,Number(appState.nodesCount)||30));
       var mode=appState.revenueMode||'hibrido';
       var gestores=Math.max(2,Math.round(nodes/5));
       var tons=(nodes*0.3).toFixed(1).replace('.',',');
@@ -1134,8 +1227,8 @@
         else{ f.textContent='Recurrente'; ds.textContent='Leasing IoT + SaaS + comisión'; }
       }
     }
-    function syncNodesFromSlider(v){ var p=Math.max(10,Math.min(300,Number(v)||60)); appState.nodesCount=p; var n=document.getElementById('input-nodes'); if(n) n.value=p; updateSimulatorCalculations(); persistState(); }
-    function syncNodesFromNumber(v){ var p=Math.max(10,Math.min(300,Number(v)||60)); appState.nodesCount=p; var s=document.getElementById('slider-nodes'); if(s) s.value=p; updateSimulatorCalculations(); persistState(); }
+    function syncNodesFromSlider(v){ var p=Math.max(3,Math.min(300,Number(v)||30)); appState.nodesCount=p; var n=document.getElementById('input-nodes'); if(n) n.value=p; updateSimulatorCalculations(); persistState(); }
+    function syncNodesFromNumber(v){ var p=Math.max(3,Math.min(300,Number(v)||30)); appState.nodesCount=p; var s=document.getElementById('slider-nodes'); if(s) s.value=p; updateSimulatorCalculations(); persistState(); }
     function changeRevenueMode(m){ appState.revenueMode=m; updateSimulatorCalculations(); persistState(); }
 
     function exportCanvasTxt(){
@@ -1150,13 +1243,13 @@
         lines.push('Indicadores: '+b.indicators.map(function(i){return i.l+' = '+i.v;}).join(' · '));
         lines.push('');
       });
-      lines.push('KPIs EJECUTIVOS: CO2 132 t/año · Material 216 t/año · Sensores 60 · Optimización 84% · Gestores 12 · Break even 14m · ROI 170% · Ganancia USD 18,600');
+      lines.push('KPIs EJECUTIVOS: CO2 1,2 t/año · Material 2,4 t/año · Sensores 3 · Optimización 84% · Gestores 3 · Break even 3m · ROI 350% · Ganancia Q 2,800');
       var content=lines.join('\n');
       try{
         if(window.notebookAppApi && typeof window.notebookAppApi.triggerFileDownload==='function'){
-          window.notebookAppApi.triggerFileDownload({content:content,contentType:'text/plain',encoding:'UTF-8',filename:'EcoRutaIoT_SmartCity Platform.txt'});
+          window.notebookAppApi.triggerFileDownload({content:content,contentType:'text/plain',encoding:'UTF-8',filename:'EcoRutaIoT_Guatemala.txt'});
         } else {
-          var blob=new Blob([content],{type:'text/plain;charset=utf-8'}); var url=URL.createObjectURL(blob); var a=document.createElement('a'); a.href=url; a.download='EcoRutaIoT_SmartCity.txt'; a.click(); URL.revokeObjectURL(url);
+          var blob=new Blob([content],{type:'text/plain;charset=utf-8'}); var url=URL.createObjectURL(blob); var a=document.createElement('a'); a.href=url; a.download='EcoRutaIoT_Guatemala.txt'; a.click(); URL.revokeObjectURL(url);
         }
       }catch(e){}
     }
