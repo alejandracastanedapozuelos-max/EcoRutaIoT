@@ -395,6 +395,40 @@
     @media(prefers-reduced-motion:reduce){
       *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
     }
+    /* ===== REPORTE PDF ACADÉMICO (impresión) ===== */
+    #pdf-report{display:none}
+    .pr-page{background:#fff;color:var(--ink-900)}
+    .pr-cover{padding:110px 60px;background:linear-gradient(135deg,#1B5E20 0%,#2E7D32 45%,#1565C0 100%);color:#fff}
+    .pr-cover-badge{display:inline-block;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.4);padding:6px 16px;border-radius:999px;margin-bottom:26px}
+    .pr-cover h1{font-family:var(--font-display);font-size:2.7rem;font-weight:800;margin:0 0 14px;letter-spacing:-.02em}
+    .pr-cover .pr-sub{font-size:1.05rem;line-height:1.6;opacity:.95;max-width:620px;margin:0 0 46px}
+    .pr-cover-meta{font-family:var(--font-mono);font-size:.82rem;line-height:1.9;opacity:.95}
+    .pr-section{padding:34px 50px}
+    .pr-section h2{font-family:var(--font-display);font-size:1.35rem;font-weight:800;color:var(--green-700);border-bottom:3px solid var(--green-300);padding-bottom:8px;margin:0 0 18px}
+    .pr-kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+    .pr-kpi{border:1px solid var(--blue-200,#DCEEFF);border-radius:12px;padding:12px;background:var(--bg-muted)}
+    .pr-kpi .k-label{font-family:var(--font-mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-600)}
+    .pr-kpi .k-value{font-size:1.2rem;font-weight:800;color:var(--blue-700)}
+    .pr-table{width:100%;border-collapse:collapse;margin-bottom:16px;font-size:.84rem}
+    .pr-table th{text-align:left;background:var(--green-700);color:#fff;padding:7px 10px;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em}
+    .pr-table td{padding:6px 10px;border-bottom:1px solid #eee}
+    .pr-table tfoot td{font-weight:700;background:var(--bg-muted)}
+    .pr-block{border:1px solid #eee;border-left:4px solid var(--green-500,#4CAF50);border-radius:8px;padding:13px 16px;margin-bottom:12px;page-break-inside:avoid}
+    .pr-block.tier-business{border-left-color:var(--blue-400,#42A5F5)}
+    .pr-block.tier-finance{border-left-color:var(--ink-900)}
+    .pr-block .pr-tag{display:block;font-family:var(--font-mono);font-size:.66rem;color:var(--ink-600);margin-bottom:5px}
+    .pr-block h3{margin:0 0 5px;font-size:.98rem}
+    .pr-block p{margin:0 0 8px;font-size:.84rem;line-height:1.5}
+    .pr-block ul{margin:0;padding-left:18px;font-size:.8rem;line-height:1.55}
+    .pr-footer{padding:26px 50px;text-align:center;font-size:.76rem;color:var(--ink-600);border-top:1px solid #eee}
+    @media print{
+      body>*:not(#pdf-report){display:none!important}
+      #pdf-report{display:block!important}
+      *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
+      @page{margin:12mm}
+      .pr-cover{page-break-after:always}
+      .pr-section{page-break-after:always}
+    }
   </style>
 </head>
 <body>
@@ -413,7 +447,7 @@
         <li><a href="#inteligencia">Inteligencia</a></li>
         <li><a href="#simulador">Simulador</a></li>
       </ul>
-      <button class="nav-cta" onclick="exportCanvasTxt()">⬇ Exportar Resumen</button>
+      <button class="nav-cta" onclick="exportCanvasPdf()">⬇ Exportar PDF</button>
     </div>
   </nav>
 
@@ -725,7 +759,7 @@
             <label for="canvas-search" class="field-label">Buscar en los 12 bloques</label>
             <input type="search" id="canvas-search" class="text-input" placeholder="Ej. Arduino, SaaS, empleo…" oninput="filterBlocksByQuery(this.value)">
           </div>
-          <button type="button" class="action-btn" onclick="exportCanvasTxt()">⬇ Exportar</button>
+          <button type="button" class="action-btn" onclick="exportCanvasPdf()">⬇ Exportar PDF</button>
           <button type="button" class="action-btn" id="reset-state-btn" onclick="resetCanvasState(this)">↺ Restablecer</button>
         </div>
       </div>
@@ -1018,6 +1052,9 @@
       <span>EcoRutaIoT · Smart City Platform · HTML + CSS + JavaScript Vanilla</span>
     </div>
   </footer>
+
+  <div id="pdf-report" aria-hidden="true"></div>
+
   <script>
     const BLOCK_DATA = {
       problema: {
@@ -1236,26 +1273,84 @@
     function syncNodesFromNumber(v){ var p=Math.max(3,Math.min(300,Number(v)||30)); appState.nodesCount=p; var s=document.getElementById('slider-nodes'); if(s) s.value=p; updateSimulatorCalculations(); persistState(); }
     function changeRevenueMode(m){ appState.revenueMode=m; updateSimulatorCalculations(); persistState(); }
 
-    function exportCanvasTxt(){
-      var lines=['EcoRutaIoT: Reciclaje Inteligente con Impacto Social','Smart City Platform · Social Business Model Canvas (12 Bloques)','=======================================================',''];
+    function escHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    function buildPdfReportHtml(){
+      var fecha = new Date().toLocaleDateString('es-GT',{day:'2-digit',month:'long',year:'numeric'});
+      var kpis = [
+        {l:'CO₂ Reducido',v:'1,2 t/año'},{l:'Material Recuperado',v:'2,4 t/año'},
+        {l:'Sensores Instalados',v:'3'},{l:'Optimización de Rutas',v:'84 %'},
+        {l:'Gestores Ambientales',v:'3'},{l:'Punto de Equilibrio',v:'3 meses'},
+        {l:'ROI',v:'350 %'},{l:'Ganancia Proyectada',v:'Q 2,800'}
+      ];
+      var html = '';
+      html += '<section class="pr-page pr-cover">';
+      html +=   '<span class="pr-cover-badge">GreenTech · Telecomunicaciones de Nueva Generación · IoT · Guatemala</span>';
+      html +=   '<h1>EcoRutaIoT</h1>';
+      html +=   '<p class="pr-sub">Reciclaje Inteligente con IoT para Ciudades Sostenibles — Social Business Model Canvas de 12 bloques, proyección financiera y lista de materiales del prototipo.</p>';
+      html +=   '<div class="pr-cover-meta">Por: Leslie Castañeda — 06144094<br>Lester Mota — 23005621<br><br>Documento generado: '+fecha+'<br>Moneda: Quetzal (Q) · Guatemala</div>';
+      html += '</section>';
+      html += '<section class="pr-page pr-section">';
+      html +=   '<h2>Dashboard Ejecutivo</h2>';
+      html +=   '<div class="pr-kpi-grid">';
+      kpis.forEach(function(k){ html += '<div class="pr-kpi"><div class="k-label">'+k.l+'</div><div class="k-value">'+k.v+'</div></div>'; });
+      html +=   '</div>';
+      html +=   '<table class="pr-table"><thead><tr><th>Indicador de Factibilidad</th><th>Valor</th></tr></thead><tbody>';
+      html +=     '<tr><td>ROI</td><td>350 %</td></tr><tr><td>Recuperación de inversión</td><td>3 meses</td></tr>';
+      html +=     '<tr><td>Ganancia proyectada</td><td>Q 2,800</td></tr><tr><td>Impacto</td><td>2,4 t recuperadas</td></tr>';
+      html +=   '</tbody></table>';
+      html += '</section>';
+      html += '<section class="pr-page pr-section">';
+      html +=   '<h2>Lista de Materiales del Prototipo</h2>';
+      html +=   '<table class="pr-table"><thead><tr><th>Componente</th><th>Cant.</th><th>Unitario</th><th>Subtotal</th></tr></thead><tbody>';
+      html +=     '<tr><td>Basurero plástico rectangular (20–30 cm)</td><td>3</td><td>Q 25</td><td>Q 75</td></tr>';
+      html +=     '<tr><td>Placa Arduino UNO R4 WiFi</td><td>1</td><td>Q 350</td><td>Q 350</td></tr>';
+      html +=     '<tr><td>Sensor ultrasónico HC-SR04</td><td>3</td><td>Q 20</td><td>Q 60</td></tr>';
+      html +=     '<tr><td>Protoboard 830 puntos</td><td>1</td><td>Q 30</td><td>Q 30</td></tr>';
+      html +=     '<tr><td>Cables Dupont (macho-macho y macho-hembra)</td><td>2</td><td>Q 15</td><td>Q 30</td></tr>';
+      html +=     '<tr><td>Cable USB-C</td><td>1</td><td>Q 12</td><td>Q 12</td></tr>';
+      html +=     '<tr><td>Fuente de alimentación USB 5 V</td><td>1</td><td>Q 20</td><td>Q 20</td></tr>';
+      html +=     '<tr><td>Cables adicionales 50 cm–1 m</td><td>1</td><td>Q 8</td><td>Q 8</td></tr>';
+      html +=     '<tr><td>LEDs verde/amarillo/rojo + resistencias 220 Ω</td><td>21</td><td>—</td><td>Q 13,50</td></tr>';
+      html +=   '</tbody><tfoot><tr><td colspan="3">Inversión total (con 25 % de contingencia)</td><td>Q 800</td></tr></tfoot></table>';
+      html += '</section>';
+      html += '<section class="pr-page pr-section">';
+      html +=   '<h2>Eco Ruta Financiera</h2>';
+      html +=   '<table class="pr-table"><thead><tr><th>Estación</th><th>Detalle</th></tr></thead><tbody>';
+      html +=     '<tr><td>1. Inicio</td><td>Inversión inicial — Q 800</td></tr>';
+      html +=     '<tr><td>2. Instalación IoT</td><td>Meses 1–3 · 3 sensores HC-SR04</td></tr>';
+      html +=     '<tr><td>3. Optimización</td><td>Ahorro del 25 %</td></tr>';
+      html +=     '<tr><td>4. Rutas inteligentes</td><td>84 % de eficiencia en campus</td></tr>';
+      html +=     '<tr><td>5. Punto de equilibrio</td><td>Mes 3</td></tr>';
+      html +=     '<tr><td>6. Ganancia</td><td>ROI 350 % · Q 2,800</td></tr>';
+      html +=   '</tbody></table>';
+      html += '</section>';
+      html += '<section class="pr-page pr-section">';
+      html += '<h2>Social Business Model Canvas — 12 Bloques</h2>';
       Object.keys(BLOCK_DATA).forEach(function(id){
-        var b=BLOCK_DATA[id], st=appState.validated[id]?'[VALIDADO]':'[EN REVISIÓN]';
-        lines.push(b.code+'. '+b.title+' ('+b.tierLabel+') '+st);
-        lines.push('Resumen: '+b.summary);
-        lines.push('Riesgos:'); b.risks.forEach(function(r){ lines.push('  - '+r.replace(/^ /,'')); });
-        lines.push('Oportunidades:'); b.opps.forEach(function(o){ lines.push('  - '+o.replace(/^ /,'')); });
-        lines.push('Impacto:'); b.impact.forEach(function(x){ lines.push('  - '+x); });
-        lines.push('Indicadores: '+b.indicators.map(function(i){return i.l+' = '+i.v;}).join(' · '));
-        lines.push('');
+        var b=BLOCK_DATA[id], st=appState.validated[id]?'Validado':'En revisión';
+        html += '<div class="pr-block tier-'+b.tier+'">';
+        html +=   '<span class="pr-tag">'+b.code+' · '+escHtml(b.tierLabel)+' · '+st+'</span>';
+        html +=   '<h3>'+escHtml(b.title)+'</h3>';
+        html +=   '<p>'+escHtml(b.summary)+'</p>';
+        html +=   '<ul>';
+        html +=     '<li><strong>Riesgos:</strong> '+b.risks.map(escHtml).join('; ')+'</li>';
+        html +=     '<li><strong>Oportunidades:</strong> '+b.opps.map(escHtml).join('; ')+'</li>';
+        html +=     '<li><strong>Impacto:</strong> '+b.impact.map(escHtml).join('; ')+'</li>';
+        html +=     '<li><strong>Indicadores:</strong> '+b.indicators.map(function(i){return escHtml(i.l)+' = '+escHtml(i.v);}).join(' · ')+'</li>';
+        html +=   '</ul>';
+        html += '</div>';
       });
-      lines.push('KPIs EJECUTIVOS: CO2 1,2 t/año · Material 2,4 t/año · Sensores 3 · Optimización 84% · Gestores 3 · Break even 3m · ROI 350% · Ganancia Q 2,800');
-      var content=lines.join('\n');
+      html += '</section>';
+      html += '<footer class="pr-footer">EcoRutaIoT — Telecomunicaciones de Nueva Generación · Guatemala · Alineado a ODS 8, 9, 11, 12 y 13 · Documento generado automáticamente desde la plataforma.</footer>';
+      return html;
+    }
+
+    function exportCanvasPdf(){
+      var root = document.getElementById('pdf-report');
       try{
-        if(window.notebookAppApi && typeof window.notebookAppApi.triggerFileDownload==='function'){
-          window.notebookAppApi.triggerFileDownload({content:content,contentType:'text/plain',encoding:'UTF-8',filename:'EcoRutaIoT_Guatemala.txt'});
-        } else {
-          var blob=new Blob([content],{type:'text/plain;charset=utf-8'}); var url=URL.createObjectURL(blob); var a=document.createElement('a'); a.href=url; a.download='EcoRutaIoT_Guatemala.txt'; a.click(); URL.revokeObjectURL(url);
-        }
+        if(root) root.innerHTML = buildPdfReportHtml();
+        window.print();
       }catch(e){}
     }
 
