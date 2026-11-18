@@ -84,12 +84,16 @@
     .hero h1 .accent{background:linear-gradient(120deg,#A5D6A7 0%,#FFFFFF 50%,#90CAF9 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
     .hero p.lead{font-size:clamp(1.05rem,.95rem + .5vw,1.3rem);line-height:1.5;font-weight:400;color:rgba(255,255,255,.88);max-width:64ch;margin:0 0 var(--s-8)}
     .hero-actions{display:flex;flex-wrap:wrap;gap:var(--s-4);margin-bottom:var(--s-10)}
+    .ic{width:1.1em;height:1.1em;flex-shrink:0;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:inline-block;vertical-align:-2px}
+    .block-cta .ic{width:.95em;height:.95em}
     .btn{display:inline-flex;align-items:center;gap:var(--s-2);padding:var(--s-3) var(--s-6);border-radius:var(--r-full);font-weight:600;font-size:.95rem;border:none;cursor:pointer;transition:transform var(--dur-1) var(--ease-out),box-shadow var(--dur-2) var(--ease-out),background var(--dur-1) var(--ease-out);text-decoration:none}
     .btn-light{background:#fff;color:var(--green-700);box-shadow:0 8px 24px rgba(0,0,0,.18)}
     .btn-light:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.24);text-decoration:none}
     .btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(6px)}
     .btn-ghost:hover{background:rgba(255,255,255,.18);transform:translateY(-2px);text-decoration:none}
     .hero-tags{display:flex;flex-wrap:wrap;gap:var(--s-3)}
+    .hero-authors{margin-top:var(--s-6);font-size:.95rem;color:rgba(255,255,255,.7);font-weight:500;letter-spacing:.01em}
+    .hero-authors strong{color:#fff;font-weight:700}
     .hero-tag{display:inline-flex;align-items:center;gap:var(--s-2);padding:var(--s-2) var(--s-4);background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:var(--r-full);font-size:.85rem;font-weight:500;color:rgba(255,255,255,.95);backdrop-filter:blur(6px)}
     @media(max-width:640px){.hero{padding:var(--s-10) var(--s-5);border-radius:var(--r-xl)}}
 
@@ -417,19 +421,20 @@
     <!-- HERO -->
     <section class="hero">
       <div class="hero-content">
-        <span class="hero-badge"><span class="dot"></span> GreenTech · Prototipo Universitario · IoT · ESG · Guatemala</span>
+        <span class="hero-badge"><span class="dot"></span> GreenTech · Telecomunicaciones de Nueva Generación · IoT · ESG · Guatemala</span>
         <h1>Reciclaje Inteligente para <span class="accent">Ciudades Sostenibles</span></h1>
-        <p class="lead">EcoRutaIoT es un prototipo universitario de Smart City para Guatemala que combina sensores IoT en contenedores, enrutamiento dinámico y empleo verde digno. Inicia con 3 contenedores inteligentes y un Bill of Materials de Q 800, escalable a pilotos municipales. Moneda y cálculos en Quetzales (Q).</p>
+        <p class="lead">EcoRutaIoT es una iniciativa de telecomunicaciones de nueva generación para Guatemala que combina sensores IoT en contenedores, enrutamiento dinámico y empleo verde digno. Inicia con 3 contenedores inteligentes y un Bill of Materials de Q 800, escalable a pilotos municipales. Moneda y cálculos en Quetzales (Q).</p>
         <div class="hero-actions">
-          <a class="btn btn-light" href="#canvas">🚀 Ver impacto del Canvas</a>
-          <a class="btn btn-ghost" href="#dashboard">📊 Explorar métricas</a>
+          <a class="btn btn-light" href="#canvas"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg> Ver impacto del Canvas</a>
+          <a class="btn btn-ghost" href="#dashboard"><svg class="ic" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> Explorar métricas</a>
         </div>
         <div class="hero-tags">
           <span class="hero-tag">🌱 1,2 t CO₂/año evitadas</span>
           <span class="hero-tag">♻️ 2,4 t material recuperado</span>
-          <span class="hero-tag">📡 30 sensores IoT</span>
+          <span class="hero-tag">📡 3 sensores IoT</span>
           <span class="hero-tag">💰 ROI 350 %</span>
         </div>
+        <p class="hero-authors">Por: <strong>Leslie Castañeda</strong> — 06144094 &nbsp;·&nbsp; <strong>Lester Mota</strong> — 23005621</p>
       </div>
     </section>
 
@@ -460,7 +465,7 @@
           <div class="kpi-icon">📡</div>
           <span class="kpi-label">Sensores Instalados</span>
           <span class="kpi-value">3</span>
-          <span class="kpi-trend info">Prototipo universitario activo</span>
+          <span class="kpi-trend info">Telecomunicaciones de nueva generación</span>
         </div>
         <div class="kpi-card" style="--accent:linear-gradient(90deg,#0D9488,#42A5F5);--icon-bg:var(--blue-100)">
           <span class="kpi-tip">Reducción de km recorridos en vacío</span>
@@ -470,7 +475,7 @@
           <span class="kpi-trend info">▲ vs. rutas fijas</span>
         </div>
         <div class="kpi-card" style="--accent:linear-gradient(90deg,#2E7D32,#81C784);--icon-bg:var(--green-100)">
-          <span class="kpi-tip">Estudiantes/gestores del prototipo universitario</span>
+          <span class="kpi-tip">Gestores del prototipo de telecomunicaciones</span>
           <div class="kpi-icon">👷</div>
           <span class="kpi-label">Gestores Ambientales</span>
           <span class="kpi-value">3</span>
@@ -481,7 +486,7 @@
           <div class="kpi-icon">🎯</div>
           <span class="kpi-label">Break Even</span>
           <span class="kpi-value">3 <span class="kpi-unit">meses</span></span>
-          <span class="kpi-trend warn">Prototipo universitario Q 800</span>
+          <span class="kpi-trend warn">Telecom. nueva generación · Q 800</span>
         </div>
         <div class="kpi-card" style="--accent:linear-gradient(90deg,#2E7D32,#1565C0);--icon-bg:var(--green-100)">
           <span class="kpi-tip">Retorno sobre inversión a 12 meses</span>
@@ -518,7 +523,7 @@
     <!-- BILL OF MATERIALS - PROTOTYPE -->
     <section class="section" id="bom">
       <div class="section-head">
-        <span class="eyebrow">Prototipo Universitario · Hardware Abierto</span>
+        <span class="eyebrow">Telecomunicaciones de Nueva Generación · Hardware Abierto</span>
         <h2 class="section-title">Bill of Materials del Prototipo</h2>
         <p class="section-sub">Inventario detallado del prototipo de 3 contenedores inteligentes con Arduino UNO R4 WiFi y sensores ultrasónicos HC-SR04. Componentes de hardware abierto, disponibles en Guatemala, escalables a piloto municipal.</p>
       </div>
@@ -740,7 +745,7 @@
                 <ul class="block-list"><li>Rutas de recolección fijas e ineficientes que generan rebalses y focos sanitarios.</li><li>Baja trazabilidad de materiales reciclables antes de llegar al relleno sanitario.</li><li>Informalidad laboral y falta de herramientas digitales para recicladores de base.</li></ul>
                 <div class="block-tags"><span class="mini-tag">Rebalse urbano</span><span class="mini-tag">Informalidad</span></div>
               </div>
-              <div class="block-footer"><span class="status-pill" id="status-problema">Sin validar</span><span class="block-cta">🔍 Ver análisis estratégico</span></div>
+              <div class="block-footer"><span class="status-pill" id="status-problema">Sin validar</span><span class="block-cta"><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M8 11h6M11 8v6"/></svg> Ver análisis estratégico</span></div>
             </article>
             <article class="canvas-block" id="block-card-beneficiarios" tabindex="0" onclick="selectBlock('beneficiarios')" onkeydown="handleBlockKey(event,'beneficiarios')">
               <div class="block-header"><div class="block-title-group"><span class="block-code">02 · Actores</span><h4 class="block-title">Beneficiarios</h4></div><span class="block-emoji">👥</span></div>
@@ -749,7 +754,7 @@
                 <ul class="block-list"><li>Recicladores y gestores ambientales guatemaltecos integrados a rutas inteligentes y seguras.</li><li>Equipos municipales de aseo urbano (DMP/DAS) que reducen desplazamientos en vacío.</li><li>Vecinos y comercios con puntos limpios disponibles y sin desbordes.</li></ul>
                 <div class="block-tags"><span class="mini-tag">Gestores Ambientales</span><span class="mini-tag">Ciudadanía</span></div>
               </div>
-              <div class="block-footer"><span class="status-pill" id="status-beneficiarios">Sin validar</span><span class="block-cta">🚀 Ver impacto</span></div>
+              <div class="block-footer"><span class="status-pill" id="status-beneficiarios">Sin validar</span><span class="block-cta"><svg class="ic" viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg> Ver impacto</span></div>
             </article>
             <article class="canvas-block" id="block-card-impacto" tabindex="0" onclick="selectBlock('impacto')" onkeydown="handleBlockKey(event,'impacto')">
               <div class="block-header"><div class="block-title-group"><span class="block-code">03 · Transformación</span><h4 class="block-title">Impacto Social</h4></div><span class="block-emoji">❤️</span></div>
@@ -758,7 +763,7 @@
                 <ul class="block-list"><li>Formalización e incremento de ingresos por tonelada recuperada con menor esfuerzo físico.</li><li>Reducción de emisiones de CO₂ al optimizar rutas de recolección mediante telemetría.</li><li>Cultura ciudadana medible de separación en origen con métricas públicas.</li></ul>
                 <div class="block-tags"><span class="mini-tag">Empleo verde</span><span class="mini-tag">Economía circular</span></div>
               </div>
-              <div class="block-footer"><span class="status-pill" id="status-impacto">Sin validar</span><span class="block-cta">🚀 Ver impacto</span></div>
+              <div class="block-footer"><span class="status-pill" id="status-impacto">Sin validar</span><span class="block-cta"><svg class="ic" viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg> Ver impacto</span></div>
             </article>
             <article class="canvas-block" id="block-card-ods" tabindex="0" onclick="selectBlock('ods')" onkeydown="handleBlockKey(event,'ods')">
               <div class="block-header"><div class="block-title-group"><span class="block-code">04 · Agenda 2030</span><h4 class="block-title">ODS Alineados</h4></div><span class="block-emoji">🌍</span></div>
@@ -766,7 +771,7 @@
                 <p class="block-lead">Contribución directa a 5 Objetivos de Desarrollo Sostenible:</p>
                 <div class="ods-mini-grid"><span class="ods-mini-badge ods-8">ODS 8 · Empleo</span><span class="ods-mini-badge ods-9">ODS 9 · IoT</span><span class="ods-mini-badge ods-11">ODS 11 · Ciudades</span><span class="ods-mini-badge ods-12">ODS 12 · Circular</span><span class="ods-mini-badge ods-13">ODS 13 · Clima</span></div>
               </div>
-              <div class="block-footer"><span class="status-pill" id="status-ods">Sin validar</span><span class="block-cta">📊 Explorar métricas</span></div>
+              <div class="block-footer"><span class="status-pill" id="status-ods">Sin validar</span><span class="block-cta"><svg class="ic" viewBox="0 0 24 24"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="4" rx=".5"/><rect x="12" y="9" width="3" height="8" rx=".5"/><rect x="17" y="5" width="3" height="12" rx=".5"/></svg> Explorar métricas</span></div>
             </article>
           </div>
         </div>
@@ -785,7 +790,7 @@
                 <ul class="block-list"><li>Municipalidades de Guatemala, MAGA y MARN que habilitan puntos de acopio públicos.</li><li>Cooperativas y asociaciones de recicladores de base (Fegares, ANTAGUA) en Guatemala.</li><li>Centros de acopio, valorizadores e industria recicladora compradora de material en Centroamérica.</li><li>Proveedores de electrónica abierta y conectividad Wi-Fi/IoT con operadoras guatemaltecas (Tigo, Claro).</li></ul>
                 <div class="block-tags"><span class="mini-tag">Municipalidades</span><span class="mini-tag">Cooperativas</span></div>
               </div>
-              <div class="block-footer"><span class="status-pill" id="status-socios">Sin validar</span><span class="block-cta">🔍 Ver análisis estratégico</span></div>
+              <div class="block-footer"><span class="status-pill" id="status-socios">Sin validar</span><span class="block-cta"><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M8 11h6M11 8v6"/></svg> Ver análisis estratégico</span></div>
             </article>
             <article class="canvas-block block-actividades" id="block-card-actividades" tabindex="0" onclick="selectBlock('actividades')" onkeydown="handleBlockKey(event,'actividades')">
               <div class="block-header"><div class="block-title-group"><span class="block-code">06 · Operación</span><h4 class="block-title">Actividades Clave</h4></div><span class="block-emoji">⚙️</span></div>
@@ -794,7 +799,7 @@
                 <ul class="block-list"><li>Despliegue e instalación de módulos sensores en contenedores y puntos limpios.</li><li>Mantenimiento preventivo, actualización de firmware y monitoreo telemétrico.</li><li>Capacitación técnica a gestores ambientales en uso de la plataforma de rutas.</li></ul>
                 <div class="block-tags"><span class="mini-tag">Instalación IoT</span><span class="mini-tag">Capacitación</span></div>
               </div>
-              <div class="block-footer"><span class="status-pill" id="status-actividades">Sin validar</span><span class="block-cta">🔍 Ver análisis estratégico</span></div>
+              <div class="block-footer"><span class="status-pill" id="status-actividades">Sin validar</span><span class="block-cta"><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M8 11h6M11 8v6"/></svg> Ver análisis estratégico</span></div>
             </article>
             <article class="canvas-block block-recursos" id="block-card-recursos" tabindex="0" onclick="selectBlock('recursos')" onkeydown="handleBlockKey(event,'recursos')">
               <div class="block-header"><div class="block-title-group"><span class="block-code">07 · Activos</span><h4 class="block-title">Recursos Clave</h4></div><span class="block-emoji">📡</span></div>
@@ -803,7 +808,7 @@
                 <ul class="block-list"><li>Placas Arduino / microcontroladores de bajo costo importados a Guatemala y sensores ultrasónicos de llenado.</li><li>Infraestructura Wi-Fi / IoT para transmisión continua de alertas de saturación.</li><li>Plataforma web en la nube con algoritmo de enrutamiento y tablero analítico.</li></ul>
                 <div class="block-tags"><span class="mini-tag">Arduino y sensores</span><span class="mini-tag">Wi-Fi / Nube</span></div>
               </div>
-              <div class="block-footer"><span class="status-pill" id="status-recursos">Sin validar</span><span class="block-cta">🔍 Ver análisis estratégico</span></div>
+              <div class="block-footer"><span class="status-pill" id="status-recursos">Sin validar</span><span class="block-cta"><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M8 11h6M11 8v6"/></svg> Ver análisis estratégico</span></div>
             </article>
             <article class="canvas-block block-propuesta is-selected" id="block-card-propuesta" tabindex="0" onclick="selectBlock('propuesta')" onkeydown="handleBlockKey(event,'propuesta')">
               <div class="block-header"><div class="block-title-group"><span class="block-code">08 · Núcleo Central</span><h4 class="block-title">Propuesta de Valor</h4></div><span class="block-emoji">✨</span></div>
@@ -812,7 +817,7 @@
                 <ul class="block-list"><li><strong>Prevención de desbordamientos:</strong> los contenedores comunican su nivel de llenado vía Wi-Fi antes de colapsar.</li><li><strong>Rutas dinámicas eficientes:</strong> reduce kilómetros recorridos, combustible y tiempos muertos.</li><li><strong>Inclusión productiva:</strong> asigna cargas verificadas a gestores formalizados, asegurando ingresos estables.</li><li><strong>Trazabilidad ESG municipal:</strong> datos confiables por zona, tipo de residuo e impacto ambiental.</li></ul>
                 <div class="block-tags"><span class="mini-tag">Reciclaje inteligente</span><span class="mini-tag">Empleo digno</span><span class="mini-tag">Datos en tiempo real</span></div>
               </div>
-              <div class="block-footer"><span class="status-pill" id="status-propuesta">Sin validar</span><span class="block-cta">🔍 Ver análisis estratégico</span></div>
+              <div class="block-footer"><span class="status-pill" id="status-propuesta">Sin validar</span><span class="block-cta"><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M8 11h6M11 8v6"/></svg> Ver análisis estratégico</span></div>
             </article>
             <article class="canvas-block block-relacion" id="block-card-relacion" tabindex="0" onclick="selectBlock('relacion')" onkeydown="handleBlockKey(event,'relacion')">
               <div class="block-header"><div class="block-title-group"><span class="block-code">09 · Vínculo</span><h4 class="block-title">Relación</h4></div><span class="block-emoji">💬</span></div>
@@ -821,7 +826,7 @@
                 <ul class="block-list"><li>Mesa de soporte técnico remoto y en terreno para hardware IoT y plataforma.</li><li>Reportes periódicos automatizados para municipalidades (toneladas, ahorro y CO₂ evitado).</li><li>Acompañamiento comunitario y seguimiento laboral con los gestores ambientales.</li></ul>
                 <div class="block-tags"><span class="mini-tag">Soporte técnico</span><span class="mini-tag">Reportes ESG</span></div>
               </div>
-              <div class="block-footer"><span class="status-pill" id="status-relacion">Sin validar</span><span class="block-cta">🔍 Ver análisis estratégico</span></div>
+              <div class="block-footer"><span class="status-pill" id="status-relacion">Sin validar</span><span class="block-cta"><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M8 11h6M11 8v6"/></svg> Ver análisis estratégico</span></div>
             </article>
             <article class="canvas-block block-canales" id="block-card-canales" tabindex="0" onclick="selectBlock('canales')" onkeydown="handleBlockKey(event,'canales')">
               <div class="block-header"><div class="block-title-group"><span class="block-code">10 · Distribución</span><h4 class="block-title">Canales</h4></div><span class="block-emoji">🚀</span></div>
@@ -830,7 +835,7 @@
                 <ul class="block-list"><li>Venta directa B2G/B2B mediante convenios con municipalidades de Guatemala, licitaciones en Guatecompras y pilotos distritales.</li><li>Plataforma web central para monitoreo de sensores, alertas de llenado y despacho de rutas.</li><li>Portal simplificado móvil para gestores ambientales y comunicación ciudadana.</li></ul>
                 <div class="block-tags"><span class="mini-tag">Venta directa</span><span class="mini-tag">Plataforma web</span></div>
               </div>
-              <div class="block-footer"><span class="status-pill" id="status-canales">Sin validar</span><span class="block-cta">🔍 Ver análisis estratégico</span></div>
+              <div class="block-footer"><span class="status-pill" id="status-canales">Sin validar</span><span class="block-cta"><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M8 11h6M11 8v6"/></svg> Ver análisis estratégico</span></div>
             </article>
           </div>
         </div>
@@ -849,7 +854,7 @@
                 <ul class="block-list"><li><strong>Hardware:</strong> kits Arduino, sensores ultrasónicos, carcasas y alimentación.</li><li><strong>Software:</strong> desarrollo web, servidores en la nube, telemetría y ciberseguridad.</li><li><strong>Capacitación e instalación:</strong> montaje, pruebas Wi-Fi y formación a gestores.</li></ul>
                 <div class="block-tags"><span class="mini-tag">Hardware IoT</span><span class="mini-tag">Software SaaS</span><span class="mini-tag">Capacitación</span></div>
               </div>
-              <div class="block-footer"><span class="status-pill" id="status-costos">Sin validar</span><span class="block-cta">📊 Explorar métricas</span></div>
+              <div class="block-footer"><span class="status-pill" id="status-costos">Sin validar</span><span class="block-cta"><svg class="ic" viewBox="0 0 24 24"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="4" rx=".5"/><rect x="12" y="9" width="3" height="8" rx=".5"/><rect x="17" y="5" width="3" height="12" rx=".5"/></svg> Explorar métricas</span></div>
             </article>
             <article class="canvas-block" id="block-card-ingresos" tabindex="0" onclick="selectBlock('ingresos')" onkeydown="handleBlockKey(event,'ingresos')">
               <div class="block-header"><div class="block-title-group"><span class="block-code">12 · Captura de Valor</span><h4 class="block-title">Fuentes de Ingreso</h4></div><span class="block-emoji">💰</span></div>
@@ -858,7 +863,7 @@
                 <ul class="block-list"><li><strong>Venta directa:</strong> adquisición única de nodos IoT instalados llave en mano.</li><li><strong>Leasing operativo:</strong> cuota mensual por equipamiento sin barrera de entrada.</li><li><strong>SaaS:</strong> licencia mensual por acceso a la plataforma, alertas y reportes.</li><li><strong>Comisión de reciclaje:</strong> porcentaje por volumen recuperado y comercializado.</li></ul>
                 <div class="block-tags"><span class="mini-tag">Venta</span><span class="mini-tag">Leasing</span><span class="mini-tag">SaaS</span><span class="mini-tag">Comisión</span></div>
               </div>
-              <div class="block-footer"><span class="status-pill" id="status-ingresos">Sin validar</span><span class="block-cta">📊 Explorar métricas</span></div>
+              <div class="block-footer"><span class="status-pill" id="status-ingresos">Sin validar</span><span class="block-cta"><svg class="ic" viewBox="0 0 24 24"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="4" rx=".5"/><rect x="12" y="9" width="3" height="8" rx=".5"/><rect x="17" y="5" width="3" height="12" rx=".5"/></svg> Explorar métricas</span></div>
             </article>
           </div>
         </div>
@@ -1121,7 +1126,7 @@
         risks:['Componentes importados (Arduino, HC-SR04) sujetos a aranceles','Costos de conectividad variables por zona','Mantenimiento de prototipo en campus universitario'],
         opps:['Hardware abierto reduce costos unitarios','Economías de escala al crecer nodos','Software reutilizable amortiza inversión'],
         impact:['Inversión inicial Q 800 (prototipo de 3 contenedores)','Costo all-in por contenedor ~Q 267 (hardware + contingencia)','OPEX mínimo: energía USB 5 V'],
-        maturity:['Fase: Prototipo universitario armado','CAPEX: Q 800','OPEX: Mínimo (USB)'],
+        maturity:['Fase: Prototipo de telecomunicaciones armado','CAPEX: Q 800','OPEX: Mínimo (USB)'],
         indicators:[{l:'CAPEX',v:'Q 800',t:'verde'},{l:'Costo/contenedor',v:'Q 267',t:'blue'}],
         tagsR:['Inflación','OPEX'], tagsO:['Economías','Hardware abierto'], tagsI:['Q 800','Q 267/contenedor'], tagsM:['Prototipo','Mínimo OPEX']
       },
